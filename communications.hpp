@@ -31,4 +31,14 @@ inline bool is_remote_ctrl_mode(const erumby_t * e) {
   return ((e->mode.pulseWidthReal >= duty_mode_remote_low) && (e->mode.pulseWidthReal <= duty_mode_remote_high)); 
 } 
 
+inline bool is_debug_mode(const erumby_t * e) {
+  #ifdef DEBUG_MODE
+  static const uint16_t duty_mode_debug_low = DUTY_MODE_HIGH - 75;
+  static const uint16_t duty_mode_debug_high = DUTY_MODE_HIGH + 75;
+  return ((e->mode.pulseWidthReal >= duty_mode_debug_low) && (e->mode.pulseWidthReal <= duty_mode_debug_high)); 
+  #else
+  return false;
+  #endif
+}
+
 #endif /* COMMUNICATIONS_HPP */

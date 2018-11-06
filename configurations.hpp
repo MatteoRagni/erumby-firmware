@@ -51,7 +51,14 @@
 #define LOOP_TIMING 2
 #define SERIAL_SPEED 250000
 
-
 #define ULONG_PI 3141592
+
+// D A N G E R : be aware of what you are doing you fool!
+#define DEBUG_MODE
+#define DEBUG_MODE_STEP_RAISE_T    5000 // ms
+#define DEBUG_MODE_STEP_STOP_T     15000 // ms
+#define DEBUG_MODE_STEP_RAISE_ESC  7150
+#define DEBUG_MODE_SERIAL_DELTA_TIME  10
+// If you don't know why there is a debug mode, comment it
 
 #endif /* CONFIGURATIONS_HPP */

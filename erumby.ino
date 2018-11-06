@@ -37,10 +37,12 @@ void loop() {
   toc = millis();
   if ((unsigned long)(toc - tic) >= LOOP_TIMING) {
     read_encoder();
-    if (is_secure_mode(&erumby))
+    if (is_secure_mode((const erumby_t *)&erumby))
       secure_mode_loop();
-    if (is_remote_ctrl_mode(&erumby))
+    if (is_remote_ctrl_mode((const erumby_t *)&erumby))
       remote_mode_loop();
+    if (is_debug_mode((const erumby_t *)&erumby))
+      debug_mode_loop();
     tic = toc;
   }
 }
@@ -76,6 +78,34 @@ void remote_mode_loop() {
   erumby.outdata.input_esc = erumby.cmd.esc;
   pwmWriteHR(ESC, erumby.cmd.esc);
 
+}
+
+#ifdef DEBUG_MODE
+uint16_t debug_timer = 0;
+#endif
+void debug_mode_loop() {
+  #ifdef DEBUG_MODE
+  if (debug_timer >= DEBUG_MODE_STEP_STOP_T) {
+    secure_mode_loop();
+  } else if (debug_timer >= DEBUG_MODE_STEP_RAISE_T) {
+    erumby.cmd.esc = DEBUG_MODE_STEP_RAISE_ESC;
+    erumby.cmd.servo = DUTY_SERVO_MIDDLE;
+    pwmWriteHR(ESC, erumby.cmd.esc);
+    pwmWriteHR(SERVO, erumby.cmd.servo);
+  } else {
+    secure_mode_loop();
+  }
+  if ((debug_timer % DEBUG_MODE_SERIAL_DELTA_TIME) == 0) { // Print ever
+    Serial.print(millis());
+    Serial.print(",")
+    Serial.print(erumby.outdata.omega_rr);
+    Serial.print(",")
+    Serial.print(erumby.outdata.omega_rl);
+    Serial.print(",")
+    Serial.println(erumby.cmd.esc);
+  }
+  debug_timer += TIMER_LOOP;
+  #endif
 }
 
 // Implementations
