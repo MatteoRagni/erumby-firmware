@@ -97,14 +97,14 @@ void debug_mode_loop() {
   }
   if ((debug_timer % DEBUG_MODE_SERIAL_DELTA_TIME) == 0) { // Print ever
     Serial.print(millis());
-    Serial.print(",")
+    Serial.print(",");
     Serial.print(erumby.outdata.omega_rr);
-    Serial.print(",")
+    Serial.print(",");
     Serial.print(erumby.outdata.omega_rl);
-    Serial.print(",")
+    Serial.print(",");
     Serial.println(erumby.cmd.esc);
   }
-  debug_timer += TIMER_LOOP;
+  debug_timer += LOOP_TIMING;
   #endif
 }
 
