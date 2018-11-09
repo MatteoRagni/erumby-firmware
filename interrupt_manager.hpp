@@ -5,6 +5,8 @@
 #include "configurations.hpp"
 #include "types.hpp"
 
+#define DUTY_MODE_DELTA 500
+
 class pwm_reader_t {
   pin_t pin;
   pin_t map;

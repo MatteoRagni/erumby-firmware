@@ -11,7 +11,7 @@
 // Pins Arduino - Receiver
 #define STEERING A8  // 1 bit del registro 0x01
 #define TRACTION A9  // 2 bit del registro 0x02
-#define MODE 2
+#define MODE_PIN 2
 
 // Pins Arduino - Motors
 #define ESC 11            // Traction motor Arduino -> ESC
@@ -45,10 +45,10 @@
 #define DUTY_ESC_MIN 5608
 
 // MODE - DUTY CYCLE VALUES
-#define DUTY_MODE_HIGH 2024
-#define DUTY_MODE_MIDDLE 1504
-#define DUTY_MODE_LOW 980
-#define DUTY_MODE_DELTA 500
+#define DUTY_MODE_MANUAL 2024
+#define DUTY_MODE_SECURE 1504
+#define DUTY_MODE_AUTO 980
+#define DUTY_MODE_OFFSET 75
 
 #define LOOP_TIMING 2
 #define SERIAL_SPEED 250000

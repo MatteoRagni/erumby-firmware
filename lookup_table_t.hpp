@@ -22,6 +22,24 @@ class lookup_table_t {
   T q[B + 1];
 
  public:
+  lookup_table_t(const T x_[B], const T y_[B]) { init(x_, y_); }
+
+  lookup_table_t(const T x_[B], const T y_[B], T sat_) { init(x_, y_, sat_); }
+
+  lookup_table_t(const T x_[B], const T y_[B], T low_sat_, T high_sat_) { init(x_, y_, low_sat_, high_sat_); }
+
+  lookup_table_t() {
+    for (size_t i = 0; i < B + 1; i++) {
+      x[i] = 0;
+      m[i] = 0;
+      q[i] = 0;
+    }
+  }
+
+  lookup_table_t(const lookup_table_t & other) {
+    copy(other);
+  }
+
   void init(const T x_[B], const T y_[B]) {
     T y[B + 1];
 
@@ -54,26 +72,20 @@ class lookup_table_t {
     q[B] = high_sat_;
   }
 
-  lookup_table_t(const T x_[B], const T y_[B]) { init(x_, y_); }
-
-  lookup_table_t(const T x_[B], const T y_[B], T sat_) { init(x_, y_, sat_); }
-
-  lookup_table_t(const T x_[B], const T y_[B], T low_sat_, T high_sat_) { init(x_, y_, low_sat_, high_sat_); }
-
-  lookup_table_t() {
-    for (size_t i = 0; i < B + 1; i++) {
-      x[i] = 0;
-      m[i] = 0;
-      q[i] = 0;
-    }
-  }
-
   inline bool is_valid() {
     for (size_t i = 1; i < B; i++) {
       if (x[i] < x[i - 1])
         return false;
     }
     return true;
+  }
+
+  void copy(const LookupTable<T, B> & other) {
+    for (size_t i = 0; i < B + 1; i++) {
+      m[i] = other.m[i];
+      q[i] = other.q[i];
+      x[i] = other.x[i];
+    }
   }
 
   T eval(T z) {

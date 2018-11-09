@@ -20,21 +20,21 @@ class radio_t {
   lookup_table_t< cmd_t, REMOTE_STEER_LUT_SIZE > steer_lookup;
 #endif
 
-  static const uint16_t duty_mode_safe_low = DUTY_MODE_MIDDLE - 75;
-  static const uint16_t duty_mode_safe_high = DUTY_MODE_MIDDLE + 75;
+  static const pulse_t duty_mode_safe_low = DUTY_MODE_SECURE - DUTY_MODE_OFFSET;
+  static const pulse_t duty_mode_safe_high = DUTY_MODE_SECURE + DUTY_MODE_OFFSET;
 
-  static const uint16_t duty_mode_remote_low = DUTY_MODE_LOW - 75;
-  static const uint16_t duty_mode_remote_high = DUTY_MODE_LOW + 75;
+  static const pulse_t duty_mode_auto_low = DUTY_MODE_AUTO - DUTY_MODE_OFFSET;
+  static const pulse_t duty_mode_auto_high = DUTY_MODE_AUTO + DUTY_MODE_OFFSET;
 
-  static const uint16_t duty_mode_manual_low = DUTY_MODE_HIGH - 75;
-  static const uint16_t duty_mode_manual_high = DUTY_MODE_HIGH + 75;
+  static const pulse_t duty_mode_manual_low = DUTY_MODE_MANUAL - DUTY_MODE_OFFSET;
+  static const pulse_t duty_mode_manual_high = DUTY_MODE_MANUAL + DUTY_MODE_OFFSET;
 
  public:
   radio_t(erumby_base_t* m_)
       : m(m_),
         motor(pwm_reader_t(TRACTION)),
         steer(pwm_reader_t(STEERING)),
-        mode(pwm_reader_mode_t(MODE)),
+        mode(pwm_reader_mode_t(MODE_PIN)),
         curr_mode(Secure) {
 #ifndef REMOTE_NOT_WORKING
     cmd_t motor_x[] = REMOTE_MOTOR_LUT_X;
@@ -57,7 +57,7 @@ class radio_t {
       }
       return;
     }
-    if ((mode.get_pulse_real() >= duty_mode_remote_low) && (mode.get_pulse_real() <= duty_mode_remote_high)) {
+    if ((mode.get_pulse_real() >= duty_mode_auto_low) && (mode.get_pulse_real() <= duty_mode_auto_high)) {
       if (curr_mode != Auto) {
         m->stop();
         curr_mode = erumby_mode_t::Auto;
