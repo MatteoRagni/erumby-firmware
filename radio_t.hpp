@@ -2,16 +2,14 @@
 #define RADIO_T_HPP
 
 #include "configurations.hpp"
-#include "interrupt_manager.hpp"
+#include "pwm_reader_t.hpp"
 #include "lookup_table_t.hpp"
 #include "types.hpp"
-
-void radio_t_mode_callback();
 
 class radio_t {
   pwm_reader_t motor;
   pwm_reader_t steer;
-  pwm_reader_mode_t mode;
+  pwm_reader_attachable_t mode;
   erumby_mode_t curr_mode;
   erumby_base_t* m;
 
@@ -34,7 +32,7 @@ class radio_t {
       : m(m_),
         motor(pwm_reader_t(TRACTION)),
         steer(pwm_reader_t(STEERING)),
-        mode(pwm_reader_mode_t(MODE_PIN)),
+        mode(pwm_reader_attachable_t(MODE_PIN)),
         curr_mode(Secure) {
 #ifndef REMOTE_NOT_WORKING
     cmd_t motor_x[] = REMOTE_MOTOR_LUT_X;
@@ -42,8 +40,14 @@ class radio_t {
     cmd_t steer_x[] = REMOTE_STEER_LUT_X;
     cmd_t steer_y[] = REMOTE_STEER_LUT_Y;
 
-    motor_lookup.init(motor_x, motor_y, (cmd_t)REMOTE_MOTOR_LUT_SAT);
-    steer_lookup.init(steer_x, steer_y, (cmd_t)REMOTE_STEER_LUT_SAT_LOW, (cmd_t)REMOTE_STEER_LUT_SAT_HIGH);
+    motor_lookup = lookup_table_t< cmd_t, REMOTE_MOTOR_LUT_SIZE >(motor_x, motor_y, (cmd_t)REMOTE_MOTOR_LUT_SAT);
+    steer_lookup = lookup_table_t< cmd_t, REMOTE_STEER_LUT_SIZE >(steer_x, steer_y, (cmd_t)REMOTE_STEER_LUT_SAT_LOW, (cmd_t)REMOTE_STEER_LUT_SAT_HIGH);
+
+    if (!motor_lookup.is_valid())
+      m->alarm("Motor lookup for radio not valid");
+    if (!steer_lookup.is_valid())
+      m->alarm("Steer lookup for radio not valid");
+    steer_lookup.x_min();
 #endif
   }
 
@@ -71,8 +75,8 @@ class radio_t {
       }
 #ifndef REMOTE_NOT_WORKING
       if (curr_mode == Manual) {
-        m->traction(motor_lookup.eval(motor.get_pulse()));
-        m->steer(steer_lookup.eval(steer.get_pulse()));
+        m->traction(motor_lookup(motor.get_pulse()));
+        m->steer(steer_lookup(steer.get_pulse()));
       }
 #endif
       return;

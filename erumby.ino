@@ -3,7 +3,6 @@
 
 #include "types.hpp"
 #include "configurations.hpp"
-#include "interrupt_manager.hpp"
 
 //void erumby_alarm();
 //erumby_mode_t erumby_mode();

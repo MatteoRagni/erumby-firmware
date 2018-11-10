@@ -14,7 +14,7 @@
 
 #include "Filters.h"
 #include "configurations.hpp"
-#include "interrupt_manager.hpp"
+#include "pwm_reader_t.hpp"
 #include "types.hpp"
 
 /** /brief Class for the Encoder sensors**
