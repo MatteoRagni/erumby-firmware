@@ -1,6 +1,15 @@
 #include <PWM.h>
 #include <Wire.h>
 
+/** 
+ * \mainpage
+ * \author Davide Piscini, Matteo Cocetti, Matteo Ragni
+ * 
+ * Firmware for erumby low level controllor.
+ * 
+ * \todo Documentation shall be completed
+ */
+
 #include "types.hpp"
 #include "configurations.hpp"
 

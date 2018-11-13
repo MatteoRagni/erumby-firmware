@@ -21,9 +21,8 @@ radio_t::radio_t(erumby_base_t* m_)
   cmd_t steer_x[] = REMOTE_STEER_LUT_X;
   cmd_t steer_y[] = REMOTE_STEER_LUT_Y;
 
-  motor_lookup = lookup_table_t< cmd_t, REMOTE_MOTOR_LUT_SIZE >(motor_x, motor_y, (cmd_t)REMOTE_MOTOR_LUT_SAT);
-  steer_lookup = lookup_table_t< cmd_t, REMOTE_STEER_LUT_SIZE >(steer_x, steer_y, (cmd_t)REMOTE_STEER_LUT_SAT_LOW,
-                                                                (cmd_t)REMOTE_STEER_LUT_SAT_HIGH);
+  motor_lookup = lookup_table_t< cmd_t, REMOTE_MOTOR_LUT_SIZE >(motor_x, motor_y);
+  steer_lookup = lookup_table_t< cmd_t, REMOTE_STEER_LUT_SIZE >(steer_x, steer_y);
 
   if (!motor_lookup.is_valid())
     m->alarm("Motor lookup for radio not valid");

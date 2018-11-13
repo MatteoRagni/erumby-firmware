@@ -3,7 +3,7 @@
 
 /**
  * \file esc_controller.hpp
- * \author Matteo Ragni
+ * \author Matteo Ragni, Davide Piscini, Matteo Cocetti
  * 
  * The file contains the code employed in the ESC control. The ESC control
  * receives a \p float with the reference for the wheel speed and try to 
