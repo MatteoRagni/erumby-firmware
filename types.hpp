@@ -78,14 +78,18 @@ class erumby_base_t {
  public:
   erumby_base_t(){};
   virtual erumby_mode_t mode() = 0;
-  virtual void alarm(const char* who) = 0;
-  virtual omega_t omega_r() = 0;
-  virtual omega_t omega_l() = 0;
+  virtual float omega_r() = 0;
+  virtual float omega_l() = 0;
+  virtual float omega() = 0;
   virtual const cmd_t traction() const = 0;
   virtual void traction(cmd_t v) = 0;
+  virtual void speed(float v) = 0;
   virtual const cmd_t steer() const = 0;
   virtual void steer(cmd_t v) = 0;
   virtual void stop() = 0;
+  
+  virtual void alarm(const char* who) = 0;
+  virtual void alarm(const char * who, const char * what) = 0;
 };
 
 #endif /* TYPES_HPP */

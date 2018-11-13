@@ -17,6 +17,7 @@
 
 #include "configurations.hpp"
 #include "types.hpp"
+#include "lookup_table_t.hpp"
 
 /** \brief Class for the ESC (Electronic speed controller)
  *
@@ -31,7 +32,8 @@ class esc_t {
   const pin_t pin;    /**< Pin for the ESC, this is specified in \p configurations.hpp */
   cmd_t value;        /**< PWM value that is currently on PWM */
   cmd_t queued_value; /**< PWM requested by the user */
-  erumby_base_t* m;
+  erumby_base_t* m;   /**< Pointer to erumby main instance */
+  lookup_table_t<float, 2> map; /**< Map from [0, 1] to [idle, max] */
 
   /** \brief Check the user input. If in remote may raise the alarm
    *
@@ -66,6 +68,9 @@ class esc_t {
    * to write immediately on the PWM the idle values.
    */
   esc_t(erumby_base_t* m_) : m(m_), value(DUTY_ESC_IDLE), queued_value(DUTY_ESC_IDLE), pin(ESC) {
+    const float x[] =  { 0.0, 1.0 };
+    const float y[] = { float(DUTY_ESC_IDLE), float(DUTY_ESC_MAX) };
+    map = lookup_table_t<float, 2>(x, y);
     SetPinFrequency(pin, PWM_FREQUENCY);
     stop();
   };
@@ -90,6 +95,39 @@ class esc_t {
    * \param v the user value to be queued
    */
   void set(cmd_t v) { queued_value = input_check(v); };
+
+  /** \brief Puts a [0,1] control value in queue
+   *
+   * The method allows the user to request a new value for the
+   * PWM with a float value from 0 to 1. The value will be written to the motor once 
+   * the esc executes a loop. This means that the writes on ESC is queued to the next
+   * iteration. The function saturates.
+   * To be clear:
+   *  1. the user calls \set with a value in [0, 1], the value is in the queue
+   *  2. the machine continues with its loop, calling all devices loop
+   *  3. When the esc loop is called, if the queued value is different
+   *   from the current value, the queued value is written on PWM.
+   * To be noted: if the user requires two value **before** at least one
+   * loop is executed, the first value will be never exported to the
+   * PWM pin (it means that the two request are faster than a single machine loop).
+   * This allows to send the command even in an Interrupt Service Routine,
+   * or in a communication routine keeping the code execution deterministic.
+   * 
+   * The input is mapped using a lookup table that is defined as:
+   * 
+   * @code
+   *  < 0 -> DUTY_CYCLE_IDLE
+   *    0 -> DUTY_CYLE_IDLE
+   *   ... (linear mapping and rounding to nearest integer)
+   *    1 -> DUTY_CYCLE_MAX
+   *  > 1 -> DUTY_CYCLE_MAX
+   * @endcode
+   * 
+   * \param v the user value to be queued
+   */
+  void ctrl(float v) { 
+    queued_value = round(map(v)); 
+  };
 
   /** \brief ESC main loop of execution
    *

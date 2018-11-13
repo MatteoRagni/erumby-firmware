@@ -8,12 +8,12 @@
  * **Class for the Encoder sensors**
  *
  * The class implements the software representation of the
- * Encoder sensor of the car. It takes a
- * PWM as input and calculate the angular velocity of the wheel.
+ * Encoder sensor of the car. It takes a PWM as input and calculate the angular 
+ * velocity of the wheel.
  */
 
-#include "Filters.h"
 #include "configurations.hpp"
+#include "high_gain_obs_t.hpp"
 #include "pwm_reader_t.hpp"
 #include "types.hpp"
 
@@ -25,9 +25,11 @@
  */
 
 class encoder_t {
-  FilterOnePole* filt; /**< lowpass filter */
-  counter_t counter;   /**< incremental counter of the encoder ppr */
-  pwm_reader_t pwm;    /**< pwm object for reading the value of signal wave */
+  counter_t counter;                 /**< incremental counter of the encoder ppr */
+  pwm_reader_t pwm;                  /**< pwm object for reading the value of signal wave */
+  high_gain_obs_t< LOOP_TIMING > hg; /**< High gain filter for encoder reading */
+  float theta;                       /**< Internal position for the wheel (direct read from the sensor) */
+  float omega;                       /**< High gain estimation of the wheel speed */
 
  public:
   /** \brief Constructor for the esc object
@@ -44,20 +46,30 @@ class encoder_t {
    *
    * \param m_ pointers to the unique instance of the erumby machine
    */
-  encoder_t(pin_t pin_) : pwm(pwm_reader_t(pin_)), counter(0) { filt = new FilterOnePole(LOWPASS, 5); }
+  encoder_t(pin_t pin_)
+      : pwm(pwm_reader_t(pin_)),
+        counter(0),
+        hg(high_gain_obs_t< LOOP_TIMING >(HG_L1, HG_L2, HG_L3, HG_EPSILON)),
+        theta(0),
+        omega(0) {}
 
-  void interrupt_callback() { pwm.interrupt_callback(); }
-
-  const omega_t get_omega() {
-    omega_t omg = (pwm.get_counter() >= 1) ? ((ULONG_PI) / (pwm.get_pulse())) : 0;
-    if (pwm.get_counter() == counter) {
-      pwm.reset_counter();
-    }
+  const void loop() {
+    theta += (M_PI * float(get_counter()) / 100.0);
+    pwm.reset_counter();
     counter = pwm.get_counter();
-    return filt->input(omg);
+    omega = hg(theta);
   }
 
+  const float get_omega() const { return omega; }
+  const float get_theta() const { return theta; }
+
   inline const counter_t get_counter() { return pwm.get_counter(); }
+  inline const void stop() {
+    theta = 0.0;
+    omega = 0.0;
+    hg.reset();
+    pwm.reset_counter();
+  }
 };
 
 #endif /* ENCODER_T_HPP */

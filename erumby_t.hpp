@@ -3,21 +3,24 @@
 
 /**
  * \file erumby_t.hpp
- * \author Davide Piscini
+ * \author Davide Piscini, Matteo Ragni
  *
- * ** Class for the ERUMBY robot**
+ * **Class for the ERUMBY robot**
  *
  * The class implements the software of the car. It manage
  * the object in the car. ESC and SERVO for the actuator,
  * ENCODER for the sensing, RADIO for modality selection
  */
 
-#include "communications_t.hpp"
+#include <Arduino.h>
+#include "communication_t.hpp"
 #include "configurations.hpp"
 #include "encoder_t.hpp"
 #include "esc_t.hpp"
 #include "radio_t.hpp"
 #include "servo_t.hpp"
+
+#include "controller_t.hpp"
 
 /** \brief Class for the ERUMBY robot
  *
@@ -26,13 +29,15 @@
  * ENCODER for the sensing, RADIO for modality selection.
  */
 class erumby_t : public erumby_base_t {
- public:
-  esc_t* esc;       /**< esc pointer to the class */
-  servo_t* servo;   /**< servo pointer to the class  */
-  radio_t* radio;   /**<  radio pointer to the class */
-  encoder_t* enc_l; /**< left encoder pointer to the class */
-  encoder_t* enc_r; /**< right encoder pointer to the class */
-  communication_t* comm;
+  static erumby_t* self;
+
+  esc_t* esc;              /**< esc pointer to the class */
+  servo_t* servo;          /**< servo pointer to the class  */
+  radio_t* radio;          /**<  radio pointer to the class */
+  encoder_t* enc_l;        /**< left encoder pointer to the class */
+  encoder_t* enc_r;        /**< right encoder pointer to the class */
+  communication_t* comm;   /**< Communication singleton with Raspberry pi */
+  controller_t speed_ctrl; /**< Controller for the wheel speed (ESC) */
 
   /** \brief Constructor for the erumby object
    *
@@ -40,21 +45,10 @@ class erumby_t : public erumby_base_t {
    * object: esc, servo, radio, enc_r, enc_l and initialize
    * the timers in order to allow the comunications
    */
-  erumby_t() {
-    InitTimersSafe();
-    Serial.println("creating esc");
-    esc = new esc_t(this);
-    Serial.println("creating servo");
-    servo = new servo_t(this);
-    Serial.println("creating radio");
-    radio = new radio_t(this);
-    Serial.println("creating enc_r");
-    enc_r = new encoder_t(R_WHEEL_ENCODER);
-    Serial.println("creating end_l");
-    enc_l = new encoder_t(L_WHEEL_ENCODER);
-    Serial.println("creating comm");
-    comm = new communication_t(this);
-  }
+  erumby_t();
+
+ public:
+  static erumby_t* create_erumby();
 
   void loop() {
     if (mode() == Auto) {
@@ -69,6 +63,8 @@ class erumby_t : public erumby_base_t {
   }
 
   void loop_secure() {
+    enc_l->loop();
+    enc_r->loop();
     comm->loop_secure();
     radio->loop();
     esc->stop();
@@ -76,6 +72,8 @@ class erumby_t : public erumby_base_t {
   }
 
   void loop_auto() {
+    enc_l->loop();
+    enc_r->loop();
     comm->loop_auto();
     radio->loop();
     esc->loop();
@@ -89,29 +87,15 @@ class erumby_t : public erumby_base_t {
     servo->stop();
   }
 
-  void alarm(const char* who) {
-    esc->stop();
-    servo->stop();
 
-    Serial.print("ALAAAAAARM!!!  ");
-    Serial.println(who);
+  void alarm(const char* who, const char* what) override;
+  void alarm(const char* who) override { alarm(who, "Unknown reason"); }
 
-    Serial.print("ESC CMD: ");
-    Serial.println(traction());
-    Serial.print("SERVO CMD: ");
-    Serial.println(steer());
-    Serial.print("I2C ESC ");
-    Serial.println(comm->traction());
-    Serial.print("I2C SERVO ");
-    Serial.println(comm->steer());
+  float omega_l() override { return enc_l->get_omega(); }
 
-    while (1) {
-    }
-  }
+  float omega_r() override { return enc_r->get_omega(); }
 
-  omega_t omega_l() override { return enc_l->get_omega(); }
-
-  omega_t omega_r() override { return enc_r->get_omega(); }
+  float omega() override { return (omega_l() + omega_r()) / 2.0; }
 
   counter_t counter_l() { return enc_l->get_counter(); }
 
@@ -122,6 +106,11 @@ class erumby_t : public erumby_base_t {
   void traction(cmd_t v) override {
     if ((v <= esc->get_max()) && (v >= esc->get_min()))
       esc->set(v);
+  }
+
+  void speed(float v) {
+    float u = speed_ctrl(v, omega());
+    esc->ctrl(u);
   }
 
   const cmd_t steer() const override { return servo->get(); }
