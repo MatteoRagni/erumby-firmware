@@ -92,91 +92,473 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommunication__t_1_1indata__t.html">indata_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input data structure.  <a href="structcommunication__t_1_1indata__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommunication__t_1_1outdata__t.html">outdata_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output data structure.  <a href="structcommunication__t_1_1outdata__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a24dfddbdc8170f35babb88567d938338"><td class="memItemLeft" align="right" valign="top"><a id="a24dfddbdc8170f35babb88567d938338"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loop_secure</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a24dfddbdc8170f35babb88567d938338">loop_secure</a> ()</td></tr>
+<tr class="memdesc:a24dfddbdc8170f35babb88567d938338"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop to run in <code>erumby_t::loop_secure</code> and <code>erumby_t::loop_manual</code>. <br /></td></tr>
 <tr class="separator:a24dfddbdc8170f35babb88567d938338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7793aee80500d569fd572135e1290a63"><td class="memItemLeft" align="right" valign="top"><a id="a7793aee80500d569fd572135e1290a63"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loop_auto</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a7793aee80500d569fd572135e1290a63">loop_auto</a> ()</td></tr>
+<tr class="memdesc:a7793aee80500d569fd572135e1290a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop to run in <code>erumby_t::loop_auto</code>. <br /></td></tr>
 <tr class="separator:a7793aee80500d569fd572135e1290a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accf153852c5915acd092c666a84ae380"><td class="memItemLeft" align="right" valign="top"><a id="accf153852c5915acd092c666a84ae380"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> (int size)</td></tr>
+<tr class="memitem:accf153852c5915acd092c666a84ae380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#accf153852c5915acd092c666a84ae380">receive</a> (int size)</td></tr>
+<tr class="memdesc:accf153852c5915acd092c666a84ae380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to run for receiving data from Wire library.  <a href="#accf153852c5915acd092c666a84ae380">More...</a><br /></td></tr>
 <tr class="separator:accf153852c5915acd092c666a84ae380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88735bc055a7d5a3f3296ddfb57e6ec7"><td class="memItemLeft" align="right" valign="top"><a id="a88735bc055a7d5a3f3296ddfb57e6ec7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>send</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a88735bc055a7d5a3f3296ddfb57e6ec7">send</a> ()</td></tr>
+<tr class="memdesc:a88735bc055a7d5a3f3296ddfb57e6ec7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to run when data are requested from the Wire library. <br /></td></tr>
 <tr class="separator:a88735bc055a7d5a3f3296ddfb57e6ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95e6470b76d88991c981b498a71e7dad"><td class="memItemLeft" align="right" valign="top"><a id="a95e6470b76d88991c981b498a71e7dad"></a>
-<a class="el" href="types_8hpp.html#acb22f4d8d582661cf61a532ee71418ce">cmd_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>traction</b> ()</td></tr>
+<tr class="memitem:a95e6470b76d88991c981b498a71e7dad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8hpp.html#acb22f4d8d582661cf61a532ee71418ce">cmd_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a95e6470b76d88991c981b498a71e7dad">traction</a> ()</td></tr>
+<tr class="memdesc:a95e6470b76d88991c981b498a71e7dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last received traction value.  <a href="#a95e6470b76d88991c981b498a71e7dad">More...</a><br /></td></tr>
 <tr class="separator:a95e6470b76d88991c981b498a71e7dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fe41a2a4daba13d36593ec718e9e8f0"><td class="memItemLeft" align="right" valign="top"><a id="a0fe41a2a4daba13d36593ec718e9e8f0"></a>
-<a class="el" href="types_8hpp.html#acb22f4d8d582661cf61a532ee71418ce">cmd_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>steer</b> ()</td></tr>
+<tr class="memitem:a0fe41a2a4daba13d36593ec718e9e8f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8hpp.html#acb22f4d8d582661cf61a532ee71418ce">cmd_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a0fe41a2a4daba13d36593ec718e9e8f0">steer</a> ()</td></tr>
+<tr class="memdesc:a0fe41a2a4daba13d36593ec718e9e8f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last received steering value.  <a href="#a0fe41a2a4daba13d36593ec718e9e8f0">More...</a><br /></td></tr>
 <tr class="separator:a0fe41a2a4daba13d36593ec718e9e8f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a191882860c82e0b0242895ebe5084410"><td class="memItemLeft" align="right" valign="top"><a id="a191882860c82e0b0242895ebe5084410"></a>
-static <a class="el" href="classcommunication__t.html">communication_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>create_comms</b> (<a class="el" href="classerumby__base__t.html">erumby_base_t</a> *m_)</td></tr>
+<tr class="memitem:a191882860c82e0b0242895ebe5084410"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcommunication__t.html">communication_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a191882860c82e0b0242895ebe5084410">create_comms</a> (<a class="el" href="classerumby__base__t.html">erumby_base_t</a> *m_)</td></tr>
+<tr class="memdesc:a191882860c82e0b0242895ebe5084410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton constructor for the communication.  <a href="#a191882860c82e0b0242895ebe5084410">More...</a><br /></td></tr>
 <tr class="separator:a191882860c82e0b0242895ebe5084410"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2436e1714079a11bcdf0c85c6dbde5d5"><td class="memItemLeft" align="right" valign="top"><a id="a2436e1714079a11bcdf0c85c6dbde5d5"></a>
-static const <a class="el" href="classcommunication__t.html">communication_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_comms</b> ()</td></tr>
+<tr class="memitem:a2436e1714079a11bcdf0c85c6dbde5d5"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="classcommunication__t.html">communication_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a2436e1714079a11bcdf0c85c6dbde5d5">get_comms</a> ()</td></tr>
+<tr class="memdesc:a2436e1714079a11bcdf0c85c6dbde5d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the singleton <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code> pointer.  <a href="#a2436e1714079a11bcdf0c85c6dbde5d5">More...</a><br /></td></tr>
 <tr class="separator:a2436e1714079a11bcdf0c85c6dbde5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
 <tr class="memitem:aa7fbdbee143e0bb5e817ffcecc8151c5"><td class="memItemLeft" align="right" valign="top"><a id="aa7fbdbee143e0bb5e817ffcecc8151c5"></a>
-typedef struct <a class="el" href="structcommunication__t_1_1outdata__t.html">communication_t::outdata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>outdata_t</b></td></tr>
+typedef struct <a class="el" href="structcommunication__t_1_1outdata__t.html">communication_t::outdata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#aa7fbdbee143e0bb5e817ffcecc8151c5">outdata_t</a></td></tr>
+<tr class="memdesc:aa7fbdbee143e0bb5e817ffcecc8151c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output data structure. <br /></td></tr>
 <tr class="separator:aa7fbdbee143e0bb5e817ffcecc8151c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62a1657190b74ebc2d5d9863fa3c07cb"><td class="memItemLeft" align="right" valign="top"><a id="a62a1657190b74ebc2d5d9863fa3c07cb"></a>
-typedef struct <a class="el" href="structcommunication__t_1_1indata__t.html">communication_t::indata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>indata_t</b></td></tr>
+typedef struct <a class="el" href="structcommunication__t_1_1indata__t.html">communication_t::indata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a62a1657190b74ebc2d5d9863fa3c07cb">indata_t</a></td></tr>
+<tr class="memdesc:a62a1657190b74ebc2d5d9863fa3c07cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input data structure. <br /></td></tr>
 <tr class="separator:a62a1657190b74ebc2d5d9863fa3c07cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a1d5d6c96a65ef31f893d963b7b1ccb71"><td class="memItemLeft" align="right" valign="top"><a id="a1d5d6c96a65ef31f893d963b7b1ccb71"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>communication_t</b> (<a class="el" href="classerumby__base__t.html">erumby_base_t</a> *m_)</td></tr>
+<tr class="memitem:a1d5d6c96a65ef31f893d963b7b1ccb71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a1d5d6c96a65ef31f893d963b7b1ccb71">communication_t</a> (<a class="el" href="classerumby__base__t.html">erumby_base_t</a> *m_)</td></tr>
+<tr class="memdesc:a1d5d6c96a65ef31f893d963b7b1ccb71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code> class. It is private.  <a href="#a1d5d6c96a65ef31f893d963b7b1ccb71">More...</a><br /></td></tr>
 <tr class="separator:a1d5d6c96a65ef31f893d963b7b1ccb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a792f8cd7d09433113de5ce1a4cf8ea99"><td class="memItemLeft" align="right" valign="top"><a id="a792f8cd7d09433113de5ce1a4cf8ea99"></a>
-<a class="el" href="structcommunication__t_1_1indata__t.html">indata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>indata</b></td></tr>
+<tr class="memitem:a792f8cd7d09433113de5ce1a4cf8ea99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcommunication__t_1_1indata__t.html">indata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a792f8cd7d09433113de5ce1a4cf8ea99">indata</a></td></tr>
 <tr class="separator:a792f8cd7d09433113de5ce1a4cf8ea99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0b5af9d064a893b473517b0c112dcdd"><td class="memItemLeft" align="right" valign="top"><a id="ac0b5af9d064a893b473517b0c112dcdd"></a>
-<a class="el" href="structcommunication__t_1_1outdata__t.html">outdata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>outdata</b></td></tr>
+<tr class="memitem:ac0b5af9d064a893b473517b0c112dcdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcommunication__t_1_1outdata__t.html">outdata_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#ac0b5af9d064a893b473517b0c112dcdd">outdata</a></td></tr>
 <tr class="separator:ac0b5af9d064a893b473517b0c112dcdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e46fb8e8782ee34f5b352f95c983c87"><td class="memItemLeft" align="right" valign="top"><a id="a2e46fb8e8782ee34f5b352f95c983c87"></a>
-byte&#160;</td><td class="memItemRight" valign="bottom"><b>input</b> [sizeof(<a class="el" href="structcommunication__t_1_1indata__t.html">indata_t</a>)]</td></tr>
+<tr class="memitem:a2e46fb8e8782ee34f5b352f95c983c87"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a2e46fb8e8782ee34f5b352f95c983c87">input</a> [sizeof(<a class="el" href="structcommunication__t_1_1indata__t.html">indata_t</a>)]</td></tr>
 <tr class="separator:a2e46fb8e8782ee34f5b352f95c983c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad70418ef3ff25a5dd23e91cd7c431da5"><td class="memItemLeft" align="right" valign="top"><a id="ad70418ef3ff25a5dd23e91cd7c431da5"></a>
-byte&#160;</td><td class="memItemRight" valign="bottom"><b>output</b> [sizeof(<a class="el" href="structcommunication__t_1_1outdata__t.html">outdata_t</a>)]</td></tr>
+<tr class="memitem:ad70418ef3ff25a5dd23e91cd7c431da5"><td class="memItemLeft" align="right" valign="top">byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#ad70418ef3ff25a5dd23e91cd7c431da5">output</a> [sizeof(<a class="el" href="structcommunication__t_1_1outdata__t.html">outdata_t</a>)]</td></tr>
 <tr class="separator:ad70418ef3ff25a5dd23e91cd7c431da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa096283dadc877ec06d0694001c16672"><td class="memItemLeft" align="right" valign="top"><a id="aa096283dadc877ec06d0694001c16672"></a>
-<a class="el" href="classerumby__base__t.html">erumby_base_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m</b></td></tr>
+<tr class="memitem:aa096283dadc877ec06d0694001c16672"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classerumby__base__t.html">erumby_base_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#aa096283dadc877ec06d0694001c16672">m</a></td></tr>
 <tr class="separator:aa096283dadc877ec06d0694001c16672"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a3a5a6875dfd3f22070fd3e5ce57e507b"><td class="memItemLeft" align="right" valign="top"><a id="a3a5a6875dfd3f22070fd3e5ce57e507b"></a>
-static <a class="el" href="classcommunication__t.html">communication_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>self</b> = nullptr</td></tr>
+<tr class="memitem:a3a5a6875dfd3f22070fd3e5ce57e507b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcommunication__t.html">communication_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcommunication__t.html#a3a5a6875dfd3f22070fd3e5ce57e507b">self</a> = nullptr</td></tr>
 <tr class="separator:a3a5a6875dfd3f22070fd3e5ce57e507b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for the i2c communications in the vehicle. </p>
+<p>The class implements the communication bus between the Raspberry PI and the low level control. The communication as for now is in a developing stage, and due to limitations in the Simulink schemes, we can only send a coherent array of data (data all of the same type). As for now the data in input is a <code>int16_t</code>, while the output data are <code>uint16_t</code>.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Convert the input and output structs in unions that uses float for data in such a way it is not necessary to swap lsb and msb, and reduce the resource for receiving data.</dd></dl>
+<p>The current structure for the <b>input data</b>:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"><code><a class="el" href="structcommunication__t_1_1indata__t.html" title="Input data structure. ">indata_t</a></code> field  </th><th class="markdownTableHeadNone">Description   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>steering</code>  </td><td class="markdownTableBodyNone">PWM value to write to steering   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>traction</code>  </td><td class="markdownTableBodyNone">Value for wheel speed if positive, value for ESC pwm if negative   </td></tr>
+</table>
+<p>The <code>traction</code> value, if positive sends the required wheel speed for the closed loop controller, while the negative value sends directly a value to the ESC.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The reference in wheel speed is: <p class="formulaDsp">
+\[\omega_{ref} = \frac{\mathrm{traction}}{100}\;(rad/s)\]
+</p>
+</dd></dl>
+<p>For the PWM values, please check the file <code><a class="el" href="configurations_8hpp.html">configurations.hpp</a></code>.</p>
+<p>The current structure for the <b>output data</b>:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"><code><a class="el" href="structcommunication__t_1_1outdata__t.html" title="Output data structure. ">outdata_t</a></code> field  </th><th class="markdownTableHeadNone">Description   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>omega_rr</code>  </td><td class="markdownTableBodyNone">Speed of the right wheel   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>omega_rl</code>  </td><td class="markdownTableBodyNone">Speed of the left wheel   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>input_esc</code>  </td><td class="markdownTableBodyNone">Current PWM written on the ESC   </td></tr>
+</table>
+<dl class="section warning"><dt>Warning</dt><dd>The speed sent out is in the form: <p class="formulaDsp">
+\begin{align} \textrm{omega\_rr} &amp; = \mathrm{round}\left( 100 \omega_{right} \right) \textrm{omega\_rl} &amp; = \mathrm{round}\left( 100 \omega_{left} \right) \end{align}
+</p>
+</dd></dl>
+<p>Since we are sending integers and the bit ordering (endianess) in the Atmel microncontroller is opposite with respect to the one of the Raspberry PI, we have to swap LSB and MSB. This is done in the receiving callback for the <code>Wire</code> library.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The class is implemented as a <b>Singleton</b>, since there can be only one user of the i2c communication bus. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00021">21</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00101">101</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1d5d6c96a65ef31f893d963b7b1ccb71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5d6c96a65ef31f893d963b7b1ccb71">&#9670;&nbsp;</a></span>communication_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">communication_t::communication_t </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classerumby__base__t.html">erumby_base_t</a> *&#160;</td>
+          <td class="paramname"><em>m_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for the <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code> class. It is private. </p>
+<p>The constructor for the <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code> class is made private in order to build a singleton instance of the class, since there can be only one user for the i2c communication bus.</p>
+<p>The constructor registers also the callbaks for sending and receiving the data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m_</td><td>erumby main instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8ino_source.html#l00015">15</a> of file <a class="el" href="communication__t_8ino_source.html">communication_t.ino</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a191882860c82e0b0242895ebe5084410"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a191882860c82e0b0242895ebe5084410">&#9670;&nbsp;</a></span>create_comms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcommunication__t.html">communication_t</a> * communication_t::create_comms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classerumby__base__t.html">erumby_base_t</a> *&#160;</td>
+          <td class="paramname"><em>m_</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Singleton constructor for the communication. </p>
+<p>The static function creates a single instance and save it in the <code>self</code> static variable. If the <code>self</code> variable is not <code>nullptr</code>, the value of <code>self</code> is returned.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m_</td><td>erumby main instance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the singleton instance of <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8ino_source.html#l00005">5</a> of file <a class="el" href="communication__t_8ino_source.html">communication_t.ino</a>.</p>
+
+</div>
+</div>
+<a id="a2436e1714079a11bcdf0c85c6dbde5d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2436e1714079a11bcdf0c85c6dbde5d5">&#9670;&nbsp;</a></span>get_comms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classcommunication__t.html">communication_t</a> * communication_t::get_comms </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the singleton <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code> pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Get the singleton <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code> pointer </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8ino_source.html#l00011">11</a> of file <a class="el" href="communication__t_8ino_source.html">communication_t.ino</a>.</p>
+
+</div>
+</div>
+<a id="accf153852c5915acd092c666a84ae380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accf153852c5915acd092c666a84ae380">&#9670;&nbsp;</a></span>receive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void communication_t::receive </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback to run for receiving data from Wire library. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>size of the message (in bytes) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8ino_source.html#l00042">42</a> of file <a class="el" href="communication__t_8ino_source.html">communication_t.ino</a>.</p>
+
+</div>
+</div>
+<a id="a95e6470b76d88991c981b498a71e7dad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95e6470b76d88991c981b498a71e7dad">&#9670;&nbsp;</a></span>traction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8hpp.html#acb22f4d8d582661cf61a532ee71418ce">cmd_t</a> communication_t::traction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the last received traction value. </p>
+<dl class="section return"><dt>Returns</dt><dd>the last received traction value </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00170">170</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0fe41a2a4daba13d36593ec718e9e8f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe41a2a4daba13d36593ec718e9e8f0">&#9670;&nbsp;</a></span>steer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8hpp.html#acb22f4d8d582661cf61a532ee71418ce">cmd_t</a> communication_t::steer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the last received steering value. </p>
+<dl class="section return"><dt>Returns</dt><dd>the last receiving steering value </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00176">176</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3a5a6875dfd3f22070fd3e5ce57e507b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a5a6875dfd3f22070fd3e5ce57e507b">&#9670;&nbsp;</a></span>self</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classcommunication__t.html">communication_t</a> * communication_t::self = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The single instance for i2c communication </p>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00115">115</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a792f8cd7d09433113de5ce1a4cf8ea99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a792f8cd7d09433113de5ce1a4cf8ea99">&#9670;&nbsp;</a></span>indata</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcommunication__t_1_1indata__t.html">indata_t</a> communication_t::indata</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instance of the input structure </p>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00116">116</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac0b5af9d064a893b473517b0c112dcdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b5af9d064a893b473517b0c112dcdd">&#9670;&nbsp;</a></span>outdata</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcommunication__t_1_1outdata__t.html">outdata_t</a> communication_t::outdata</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Instance of the output structure </p>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00117">117</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e46fb8e8782ee34f5b352f95c983c87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e46fb8e8782ee34f5b352f95c983c87">&#9670;&nbsp;</a></span>input</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte communication_t::input[sizeof(<a class="el" href="structcommunication__t_1_1indata__t.html">indata_t</a>)]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Input stream </p>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00118">118</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad70418ef3ff25a5dd23e91cd7c431da5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70418ef3ff25a5dd23e91cd7c431da5">&#9670;&nbsp;</a></span>output</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">byte communication_t::output[sizeof(<a class="el" href="structcommunication__t_1_1outdata__t.html">outdata_t</a>)]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Output stream </p>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00119">119</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa096283dadc877ec06d0694001c16672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa096283dadc877ec06d0694001c16672">&#9670;&nbsp;</a></span>m</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classerumby__base__t.html">erumby_base_t</a>* communication_t::m</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Pointer to the erumby main class instance </p>
+
+<p class="definition">Definition at line <a class="el" href="communication__t_8hpp_source.html#l00120">120</a> of file <a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="communication__t_8hpp_source.html">communication_t.hpp</a></li>
 <li><a class="el" href="communication__t_8ino_source.html">communication_t.ino</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 11:52:43 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:31:50 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -10,7 +10,7 @@
  * set the PWM pulse witdh in order to obtain such value.
  * 
  * The scheme of the controller follows:
- * @code
+ * @cond
  * 
  *                                                          +------------+
  *                                             u in (0,1)   |            |       Output to ESC PWM pin
@@ -38,13 +38,14 @@
  * w_hg ---->O<----------------------------------------------------------+ PHI(w) +<---------------------+
  *          + -                            w_sp (delayed)                |        |     x (delayed)
  *                                                                       +--------+
- * @endcode
+ * @endcond
+ * @image html controller.png "Controller Scheme"
  * 
  * The controller is composed by several parts, and in particular we have as input to the scheme:
- *  - `w_r` that is the reference set point
- *  - `w_hg` that is the estimation coming from the high gain observers in the \p encoder_t. To
+ *  - \f$\omega_r\f$ that is the reference set point
+ *  - \f$\omega_{hg}\f$ that is the estimation coming from the high gain observers in the \p encoder_t. To
  *     be precise \f$ \omega_{hg} = \frac{1}{2} ( \omega_{hg,left} + \omega_{hg,right} )\f$
- *  - `w_sp` is the prediction of the speed of the wheel for the system without delay predicted by
+ *  - \f$\omega_{sp}\f$ is the prediction of the speed of the wheel for the system without delay predicted by
  *    the Smith predictor. The plant is modeled as a 1 state wiener model:
  *    \f[
  *      \dot{x} = - a x + a \mathrm{sat}(u)
@@ -347,7 +348,7 @@ class smith_predictor_t {
  * set the PWM pulse witdh in order to obtain such value.
  * 
  * The scheme of the controller follows:
- * @code
+ * @cond
  * 
  *                                                          +------------+
  *                                             u in (0,1)   |            |       Output to ESC PWM pin
@@ -375,13 +376,14 @@ class smith_predictor_t {
  * w_hg ---->O<----------------------------------------------------------+ PHI(w) +<---------------------+
  *          + -                            w_sp (delayed)                |        |     x (delayed)
  *                                                                       +--------+
- * @endcode
+ * @endcond
+ * @image html controller.png "Controller Scheme"
  * 
  * The controller is composed by several parts, and in particular we have as input to the scheme:
- *  - `w_r` that is the reference set point
- *  - `w_hg` that is the estimation coming from the high gain observers in the \p encoder_t. To
+ *  - \f$\omega_r\f$ that is the reference set point
+ *  - \f$\omega_{hg}\f$ that is the estimation coming from the high gain observers in the \p encoder_t. To
  *     be precise \f$ \omega_{hg} = \frac{1}{2} ( \omega_{hg,left} + \omega_{hg,right} )\f$
- *  - `w_sp` is the prediction of the speed of the wheel for the system without delay predicted by
+ *  - \f$\omega_{sp}\f$ is the prediction of the speed of the wheel for the system without delay predicted by
  *    the Smith predictor. The plant is modeled as a 1 state wiener model:
  *    \f[
  *      \dot{x} = - a x + a \mathrm{sat}(u)
@@ -390,19 +392,19 @@ class smith_predictor_t {
  *    \f[
  *      \omega_{sp} = \phi(u) = \frac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2} 
  *    \f]
- *    the parameters \f$ a, c_1, c_2 \f$ should be identified and inserted in the \p configure.hpp
+ *    the parameters \f$a, c_1, c_2\f$ should be identified and inserted in the \p configure.hpp
  *    file.
- *  - `u` is the output to be sent to the esc as a PWM.
+ *  - \f$u\f$ is the output to be sent to the esc as a PWM.
  * 
- * | Param         | Define              | Description                           |
- * |---------------|---------------------|---------------------------------------|
- * | \f$ a \f$     | `CTRL_MODEL_A`      | Dynamical system pole                 |
- * | \f$ c_1 \f$   | `CTRL_NONLIN_A`     | Non linearity first coefficient       |
- * | \f$ c_2 \f$   | `CTRL_NONLIN_B`     | Non linearity second coefficient      |
- * | \f$ d \f$     | `CTRL_SYSTEM_DELAY` | Delay: (\f$mod(d,t_s) = 0\f$! (in ms) |
- * | \f$ t_s \f$   | `LOOP_TIMING`       | Time step for integration (in ms)     |
- * | \f$ k_p \f$   | `CTRL_KP`           | PI controller proportional gain       |
- * | \f$ k_i \f$   | `CTRL_KI`           | PI controller integrative gain        | 
+ * | Param       | Define              | Description                           |
+ * |-------------|---------------------|---------------------------------------|
+ * | \f$a\f$     | `CTRL_MODEL_A`      | Dynamical system pole                 |
+ * | \f$c_1\f$   | `CTRL_NONLIN_A`     | Non linearity first coefficient       |
+ * | \f$c_2\f$   | `CTRL_NONLIN_B`     | Non linearity second coefficient      |
+ * | \f$d\f$     | `CTRL_SYSTEM_DELAY` | Delay: (\f$mod(d,t_s) = 0\f$! (in ms) |
+ * | \f$t_s\f$   | `LOOP_TIMING`       | Time step for integration (in ms)     |
+ * | \f$k_p\f$   | `CTRL_KP`           | PI controller proportional gain       |
+ * | \f$k_i\f$   | `CTRL_KI`           | PI controller integrative gain        | 
  *    
  * **DELAY and LOOP_TIMING**: the controller has been built with the idea of running in the real
  * time loop, which runs approximatively a 250Hz (4 ms). The Delay identified for the system is nominally

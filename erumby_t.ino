@@ -19,18 +19,54 @@ erumby_t::erumby_t()  {
   comm = communication_t::create_comms(this);
 }
 
+void erumby_t::loop() {
+  if (mode() == Auto) {
+    loop_auto();
+    return;
+  }
+  if (mode() == Manual) {
+    loop_secure();
+    return;
+  }
+  loop_secure();
+}
+
+void erumby_t::loop_secure() {
+  enc_l->loop();
+  enc_r->loop();
+  comm->loop_secure();
+  radio->loop();
+  esc->stop();
+  servo->stop();
+}
+
+void erumby_t::loop_auto() {
+  enc_l->loop();
+  enc_r->loop();
+  comm->loop_auto();
+  radio->loop();
+  esc->loop();
+  servo->loop();
+}
+
+void erumby_t::stop() {
+  enc_l->stop();
+  enc_r->stop();
+  esc->stop();
+  servo->stop();
+}
+
 void erumby_t::alarm(const char* who, const char* what) {
   char led = 0;
-  static const byte led_pin = 13;
   esc->stop();
   servo->stop();
 
-  pinMode(led_pin, OUTPUT);
+  pinMode(ERROR_LED_PORT, OUTPUT);
   Serial.begin(SERIAL_SPEED);
   Serial.flush();
   while (1) {
     led ^= 1;
-    digitalWrite(led_pin, led);
+    digitalWrite(ERROR_LED_PORT, led);
 
     Serial.println("\n\nALARM MESSAGE");
     Serial.print("origin:   ");

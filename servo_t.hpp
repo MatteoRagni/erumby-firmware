@@ -36,7 +36,7 @@ class servo_t {
   const pin_t pin;    /**< Pin for the SERVO, this is specified in \p configurations.hpp */
   cmd_t value;        /**< PWM value that is currently on PWM */
   cmd_t queued_value; /**< PWM requested by the user */
-  erumby_base_t* m;
+  erumby_base_t* m; /**< Pointer to erumby main instance */
 
   /** \brief Check the user input. If in remote may raise the alarm
    *
@@ -74,7 +74,7 @@ class servo_t {
    * In order to set the frequency, the timers should be initialized
    * by the \p e_rumby constructor.
    *
-   * At the end of the constructor the \p alarm is called in order to be sure
+   * At the end of the constructor the \p stop is called in order to be sure
    * to write immediately on the PWM the idle values.
    *
    * \param m_ pointers to the unique instance of the erumby machine
@@ -91,7 +91,7 @@ class servo_t {
    * a loop. This means that the writes on SERVO is queued to the next
    * iteration.
    * To be clear:
-   *  1. the user calls \set with a value of PWM, the value is in the queue
+   *  1. the user calls \p set with a value of PWM, the value is in the queue
    *  2. the machine continues with its loop, calling all devices loop
    *  3. When the servo loop is called, if the queued value is different
    *   from the current value, the queued value is written on PWM.
@@ -106,11 +106,11 @@ class servo_t {
    */
   void set(cmd_t v) { queued_value = input_check(v); };
 
-  /** \brief Servo main loop
+  /** \brief SERVO main loop of execution
    *
    * This function must be called inside the \p erumby_t::loop and
-   * it is the main loop for the **servo**. When value is different than
-   * the queued value, the queud value is written to the **servo** and stored
+   * it is the main loop for the SERVO. When value is different than
+   * the queued value, the queud value is written to the SERVO and stored
    * as the current value.
    *
    * \see set
@@ -133,23 +133,50 @@ class servo_t {
     pwmWriteHR(pin, value);
   }
 
-  /** \brief Returns the value currently on the PWM pin */
+  /** 
+   * \brief Returns the value currently on the PWM pin
+   * \return the value that is currently wirtten in pwm 
+   */
   inline const cmd_t get() const { return value; }
-  /** \brief Returns full Right PWM value (it is the minimum PWM value) */
+
+  /** 
+   * \brief Returns minimum PWM value possible 
+   * \return the minim value for the SERVO that it is possible to write
+   * \see DUTY_SERVO_DX 
+   */
   inline const cmd_t get_full_dx() const { return DUTY_SERVO_DX; }
-  /** \brief Returns full Left PWM value (it is the maximum PWM value) */
+  
+  /** 
+   * \brief Returns maximum PWM value possible 
+   * \return the minim value for the SERVO that it is possible to write
+   * \see DUTY_SERVO_SX 
+   */  
   inline const cmd_t get_full_sx() const { return DUTY_SERVO_SX; }
-  /** \brief Returns the Center PWM value */
+
+  /** 
+   * \brief Returns the idle PWM value 
+   * \return the PWM value that stops the motor
+   * \see DUTY_SERVO_IDLE
+   */
   inline const cmd_t get_center() const { return DUTY_SERVO_MIDDLE; }
 
 #if DUTY_SERVO_SX > DUTY_SERVO_DX
+ /** 
+  * \brief Returns the maximum value of the PWM for the Servo
+  * \return the maximum value for the PWM
+  * \see DUTY_SERVO_SX
+  */
   inline const cmd_t get_max() { return DUTY_SERVO_SX; }
+  /** 
+  * \brief Returns the minimum value of the PWM for the Servo
+  * \return the minimum value for the PWM
+  * \see DUTY_SERVO_DX
+  */
   inline const cmd_t get_min() { return DUTY_SERVO_DX; }
 #else
   inline const cmd_t get_max() { return DUTY_SERVO_DX; }
   inline const cmd_t get_min() { return DUTY_SERVO_SX; }
 #endif
-  friend class erumby_t;
 };
 
 #endif /* ESC_T_HPP */

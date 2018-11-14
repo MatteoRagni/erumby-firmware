@@ -79,7 +79,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;Arduino.h&gt;</code><br />
-<code>#include &quot;configurations.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="configurations_8hpp_source.html">configurations.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cyclic__array__t_8hpp_source.html">cyclic_array_t.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="types_8hpp_source.html">types.hpp</a>&quot;</code><br />
 </div>
@@ -129,10 +129,33 @@ const void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Matteo Ragni, Davide Piscini, Matteo Cocetti</dd></dl>
 <p>The file contains the code employed in the ESC control. The ESC control receives a <code>float</code> with the reference for the wheel speed and try to set the PWM pulse witdh in order to obtain such value.</p>
-<p>The scheme of the controller follows: </p><div class="fragment"><div class="line">                                                         +------------+</div><div class="line">                                            u in (0,1)   |            |       Output to ESC PWM pin</div><div class="line">                                          +-------------&gt;+ PWM_map(u) +------------------------------&gt;</div><div class="line">                +--------------+          |              |            |</div><div class="line">                |              | u_ff     |              +------------+</div><div class="line">       +-------&gt;+ PHI_INV(w_r) +------+   |</div><div class="line">       |        |              |      |   |</div><div class="line">       |        +--------------+      |   |                  Smith Predictor with a copy of the plant</div><div class="line">       |                              |   |</div><div class="line">       |        +--------------+      |   |   +--------+     +------------------+     +----------+</div><div class="line">       | +   e  |              | u_fb V+  |   |        |  q  |                  |  x  |          |</div><div class="line"> w_r --+-&gt;O-----+ PI Ctrl      +-----&gt;O---+--&gt;+ SAT(u) +----&gt;+ dx = -a x + a q  +--+-&gt;+ exp(-ds) +----+</div><div class="line">          ^-    |              |     +        |        |     |                  |  |  |          |    |</div><div class="line">          |     +--------------+              +--------+     +------------------+  |  +----------+    |</div><div class="line">          |                                                                        |                  |</div><div class="line">          |                                                           +--------+   |   Delay          |</div><div class="line">          |+                                                          |        |   |                  |</div><div class="line">          O&lt;----------------------------------------------------------+ PHI(w) +&lt;--+ x                |</div><div class="line">         +^                             w_sp                          |        |                      |</div><div class="line">          |                                                           +--------+                      |</div><div class="line">          |                                                                                           |</div><div class="line">          |                                                           +--------+                      |</div><div class="line">          |                                                           |        |                      |</div><div class="line">w_hg ----&gt;O&lt;----------------------------------------------------------+ PHI(w) +&lt;---------------------+</div><div class="line">         + -                            w_sp (delayed)                |        |     x (delayed)</div><div class="line">                                                                      +--------+</div></div><!-- fragment --><p>The controller is composed by several parts, and in particular we have as input to the scheme:</p><ul>
-<li><code>w_r</code> that is the reference set point</li>
-<li><code>w_hg</code> that is the estimation coming from the high gain observers in the <code><a class="el" href="classencoder__t.html">encoder_t</a></code>. To be precise \( \omega_{hg} = \frac{1}{2} ( \omega_{hg,left} + \omega_{hg,right} )\)</li>
-<li><code>w_sp</code> is the prediction of the speed of the wheel for the system without delay predicted by the Smith predictor. The plant is modeled as a 1 state wiener model: <p class="formulaDsp">
+<p>The scheme of the controller follows: </p>
+
+<p class="definition">Definition in file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a68fa5fb51e0e0b733978cd8d35f60ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68fa5fb51e0e0b733978cd8d35f60ee0">&#9670;&nbsp;</a></span>time_delay_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="controller__t_8hpp.html#a68fa5fb51e0e0b733978cd8d35f60ee0">time_delay_t</a> =  <a class="el" href="classcyclic__array__t.html">cyclic_array_t</a>&lt; float, DELAY / MILLIS &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Class wich implements a PI controller. </p>
+<div class="image">
+<img src="controller.png" alt="controller.png"/>
+<div class="caption">
+Controller Scheme</div></div>
+<p> The controller is composed by several parts, and in particular we have as input to the scheme:</p><ul>
+<li>\(\omega_r\) that is the reference set point</li>
+<li>\(\omega_{hg}\) that is the estimation coming from the high gain observers in the <code><a class="el" href="classencoder__t.html">encoder_t</a></code>. To be precise \( \omega_{hg} = \frac{1}{2} ( \omega_{hg,left} + \omega_{hg,right} )\)</li>
+<li>\(\omega_{sp}\) is the prediction of the speed of the wheel for the system without delay predicted by the Smith predictor. The plant is modeled as a 1 state wiener model: <p class="formulaDsp">
 \[ \dot{x} = - a x + a \mathrm{sat}(u) \]
 </p>
  with the nonlinear output: <p class="formulaDsp">
@@ -163,29 +186,10 @@ const void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href
 <dl class="section warning"><dt>Warning</dt><dd>The delay is a characteristic of this particular system. It is not possible to eliminate it via software.</dd>
 <dd>
 All the hardcoded constants are concentrated in the class <code>controller_t!</code> </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcontroller__t.html" title="The actual ESC controller. ">controller_t</a> </dd></dl>
-
-<p class="definition">Definition in file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a68fa5fb51e0e0b733978cd8d35f60ee0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68fa5fb51e0e0b733978cd8d35f60ee0">&#9670;&nbsp;</a></span>time_delay_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="controller__t_8hpp.html#a68fa5fb51e0e0b733978cd8d35f60ee0">time_delay_t</a> =  <a class="el" href="classcyclic__array__t.html">cyclic_array_t</a>&lt; float, DELAY / MILLIS &gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Class wich implements a PI controller. </p>
-<p>The class implements a PI controller with an Backward Euler discretization: </p><p class="formulaDsp">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classcontroller__t.html" title="The actual ESC controller. ">controller_t</a> The class implements a PI controller with an Backward Euler discretization: <p class="formulaDsp">
 \[ s = \frac{z - 1}{t_s z} \]
 </p>
-<p> The constructor takes as arguments the proportional and integrative gains and evaluates internally the discretization. Do not discretize the gains manually.</p>
+ The constructor takes as arguments the proportional and integrative gains and evaluates internally the discretization. Do not discretize the gains manually.</dd></dl>
 <p>The internal recursion will be: </p><p class="formulaDsp">
 \begin{align} x_{k} &amp; = x_{k - 1} + t_s e{k} \\ u_{k} &amp; = k_i x_{k - 1} + (k_p + t_s k_i) e_{k} \f{align} Usage example: @code static const timing_t ts = 4; // ms pi_ctrl_t&lt;ts&gt; ctrl(1.0, 0.0); // Proportional only controller with kp = 1 // and sample time 4ms void real_time_loop() { float reference = get_reference(); // get the reference float measure = get_measure(); // output of the system float u = ctrl(reference - measure); // evaluate your new control set_control(u); // Set your control } @endcode \tparam MILLIS the discretization time in ms. Should be equal to the real time loop timing */ template &lt; timing_t MILLIS &gt; class pi_ctrl_t { const static float ts = float(MILLIS) / 1000.0; /**&lt; Time step in seconds */ float ei; /**&lt; Integral of the error */ float kp; /**&lt; \f$k_p = k_{p,in} + t_s k_{i,in} \f$: discretized proportional gain */ float ki; /**&lt; \f$k_i = k{i,in}\f$: discretized integrative gain */ public: /** \brief Empty constructor, sets the gains to zero */ pi_ctrl_t() : ei(0) { gain(0, 0); } /** \brief Normal constructor, evaluates the gain and discretize This constructor takes the gains as input and evaluates the gains for the discretized version of the controller. \param kp_ \f$ k_{p,in} \f$: proportional gain of the controller \param ki_ \f$ k_{i,in} \f$: integrative gain of the controller */ pi_ctrl_t(const float kp_, const float ki_) : ei(0) { gain(kp_, ki_); } /** \brief Updates the gain of the controller Changes the gain of the controller evaluating the following discretized gain: \f{align} k_p &amp; = k_{p,in} + t_s k_{i,in} \\ k_i &amp; = k_{i,in} \f{align} \param kp_ \f$ k_{p,in} \f$: proportional gain of the controller \param ki_ \f$ k_{i,in} \f$: integrative gain of the controller */ void gain(const float kp_, const float ki_) { ki = ki_; kp = kp_ + ts * ki_; } /** \brief Evaluate control using error Evaluates the next control action using the current error. The error is the difference between setpoint (\f$ r \f$) and current reading (\f$ y \f$). \param e current error (\f$r - y\f$) \return the control action */ const float operator()(const float e) { float u = ki * ei + kp * e; ei += ts * e; return u; } /** \brief reset the internal state of the controller */ void reset() { ei = 0; } /** \brief reset the internal state of the controller \param ei_ new value of the state */ void reset(const float ei_) { ei = ei_; } }; /** \brief Dicretization of the time delay The time delay is a \p cyclic_array_t that has a memory size which is \f$ n = \mathrm{floor}(d / t_s) \f$. The discretized system is: \f{align} x_{1}^{k+1} &amp;= x_2^{k} \\ x_{2}^{k+1} &amp;= x_3^{k} \\ &amp; \vdots x_{n-1}^{k+1} &amp;= x_n^{k} \\ x_n^{k+1} &amp;= u \f{align} Using templates for the creation of this kind of delay has an advantage in terms of code efficiency, but as drawback the delay is fixed at compile time. This also implies that the following should be respected. \f[ \mathrm{mod}(d^{(ms)}, t_s^{(ms)}) = 0 \]
 </p>
@@ -197,7 +201,7 @@ template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00208">208</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00209">209</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -229,7 +233,7 @@ template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00273">273</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00274">274</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -260,7 +264,7 @@ template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00284">284</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00285">285</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -299,7 +303,7 @@ template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the output of the non linearity \( \phi(u) \) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00305">305</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00306">306</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -321,7 +325,7 @@ template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
 <p>The value of the output in the internal model (with delay) </p>
 <dl class="section return"><dt>Returns</dt><dd>the value of the output in the internal model </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00311">311</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00312">312</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -343,7 +347,7 @@ template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
 <p>The value of the output prediction in the internal model (without delay) </p>
 <dl class="section return"><dt>Returns</dt><dd>the value of the output prediction in the internal model </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00316">316</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00317">317</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -382,14 +386,14 @@ template&lt;timing_t MILLIS, timing_t DELAY&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00336">336</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00337">337</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 11:52:43 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:31:49 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

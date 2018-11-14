@@ -52,18 +52,31 @@ class encoder_t {
         hg(high_gain_obs_t< LOOP_TIMING >(HG_L1, HG_L2, HG_L3, HG_EPSILON)),
         theta(0),
         omega(0) {}
-
+  
+  /** \brief Main loop to run for reading the encoders
+   * 
+   * The main loop runs the loop of the high gain observer, after reading 
+   * the angle offset of the encoder (in terms of counts)
+   */
   const void loop() {
-    theta += (M_PI * float(get_counter()) / 100.0);
+    theta += (M_PI * float(pwm.get_counter()) / float(ENCODER_QUANTIZATION));
     pwm.reset_counter();
     counter = pwm.get_counter();
     omega = hg(theta);
   }
 
+  /** 
+   * \brief Returns the wheel speed (estimation of the high gain observer)
+   * \return the wheel speed
+   */
   const float get_omega() const { return omega; }
+  /**
+   * \brief Returns the current angle of the wheel (raw value)
+   * \return the current raw value of wheel angle
+   */ 
   const float get_theta() const { return theta; }
 
-  inline const counter_t get_counter() { return pwm.get_counter(); }
+  /** \brief Resets the state of the encoder (use for mode change) */
   inline const void stop() {
     theta = 0.0;
     omega = 0.0;

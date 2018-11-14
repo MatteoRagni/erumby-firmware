@@ -80,11 +80,17 @@ $(function() {
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>communication_t()
+: <a class="el" href="classcommunication__t.html#a1d5d6c96a65ef31f893d963b7b1ccb71">communication_t</a>
+</li>
 <li>controller_t()
 : <a class="el" href="classcontroller__t.html#a1cf53b3b04f2b5cc21872500bf9dc528">controller_t</a>
 </li>
 <li>copy()
 : <a class="el" href="classcyclic__array__t.html#a01a50dbc8a1c0072b5afd86b2db8a403">cyclic_array_t&lt; T, N &gt;</a>
+</li>
+<li>create_comms()
+: <a class="el" href="classcommunication__t.html#a191882860c82e0b0242895ebe5084410">communication_t</a>
 </li>
 <li>create_radio()
 : <a class="el" href="classradio__t.html#a57f0249de27ea10df4110dd6529e21d6">radio_t</a>
@@ -113,7 +119,7 @@ $(function() {
 : <a class="el" href="classerumby__t.html#afb22a2ff82cbe4c6248dd19c398bc327">erumby_t</a>
 </li>
 <li>esc_sp_t()
-: <a class="el" href="classcontroller__t_1_1esc__sp__t.html#a6b10fe5ab563f97341bb48fc6c3cf0e5">controller_t::esc_sp_t</a>
+: <a class="el" href="classcontroller__t_1_1esc__sp__t.html#a8f179ab18060b3c7dd9a7347faff6a63">controller_t::esc_sp_t</a>
 </li>
 <li>esc_t()
 : <a class="el" href="classesc__t.html#a4b83e017ed938f63df070c2058eba703">esc_t</a>
@@ -129,7 +135,7 @@ $(function() {
 : <a class="el" href="classcyclic__array__t.html#ab45a111c5a22c772ea988c6467a2371d">cyclic_array_t&lt; T, N &gt;</a>
 </li>
 <li>front()
-: <a class="el" href="classcyclic__array__t.html#ab4dd953b7ff9965562232f016c694dc0">cyclic_array_t&lt; T, N &gt;</a>
+: <a class="el" href="classcyclic__array__t.html#abf744d4b66e4770ba4b3e04f0b726f54">cyclic_array_t&lt; T, N &gt;</a>
 </li>
 </ul>
 
@@ -141,6 +147,9 @@ $(function() {
 </li>
 <li>get_center()
 : <a class="el" href="classservo__t.html#a72ee9c58ec0061681f7bffacef5ea6dc">servo_t</a>
+</li>
+<li>get_comms()
+: <a class="el" href="classcommunication__t.html#a2436e1714079a11bcdf0c85c6dbde5d5">communication_t</a>
 </li>
 <li>get_counter()
 : <a class="el" href="classpwm__reader__attachable__t.html#ad92c411f3d1e5a1e41022e759b7913dd">pwm_reader_attachable_t</a>
@@ -157,12 +166,17 @@ $(function() {
 </li>
 <li>get_max()
 : <a class="el" href="classesc__t.html#a6fd0abbe511fe9e29010d0a8fc00fce1">esc_t</a>
+, <a class="el" href="classservo__t.html#a75a85005402b798f64b06e88e33255d8">servo_t</a>
 </li>
 <li>get_min()
 : <a class="el" href="classesc__t.html#a6ba2b2c8a06aa29fa7fdccebfaf02e84">esc_t</a>
+, <a class="el" href="classservo__t.html#a1beccd6b9b2f8cd55b6de07301497862">servo_t</a>
 </li>
 <li>get_mode()
 : <a class="el" href="classradio__t.html#a6980188ee672e53e3561f8b8f4eaac5f">radio_t</a>
+</li>
+<li>get_omega()
+: <a class="el" href="classencoder__t.html#a3dd5599f626b1f70530e5b389375c634">encoder_t</a>
 </li>
 <li>get_port_reader()
 : <a class="el" href="classpwm__reader__t.html#a120ab7984e3c1afc72ff8c992d4d329d">pwm_reader_t</a>
@@ -173,6 +187,9 @@ $(function() {
 </li>
 <li>get_pulse_real()
 : <a class="el" href="classpwm__reader__attachable__t.html#a87084d1e50a92c4c54dfb21255ee45d9">pwm_reader_attachable_t</a>
+</li>
+<li>get_theta()
+: <a class="el" href="classencoder__t.html#aa833668fba5dd5bef0d4bd6f5c04de1e">encoder_t</a>
 </li>
 </ul>
 
@@ -223,10 +240,17 @@ $(function() {
 : <a class="el" href="classlookup__table__t.html#ab90d7d99bac3b92cff5e2146ec5888a3">lookup_table_t&lt; T, B &gt;</a>
 </li>
 <li>loop()
-: <a class="el" href="classerumby__t.html#a2567c659113289cb9d1c0dec0e8d6205">erumby_t</a>
+: <a class="el" href="classencoder__t.html#a069bef4cc33c689cfbafea466dafbc7c">encoder_t</a>
+, <a class="el" href="classerumby__t.html#a2567c659113289cb9d1c0dec0e8d6205">erumby_t</a>
 , <a class="el" href="classesc__t.html#ab03daa05e9be0391d9737797d37e6e4d">esc_t</a>
 , <a class="el" href="classradio__t.html#a606e7e0b44c5e7c01be742a13e332242">radio_t</a>
 , <a class="el" href="classservo__t.html#ae5b800ac8bac96a3872d80d04eb132a4">servo_t</a>
+</li>
+<li>loop_auto()
+: <a class="el" href="classcommunication__t.html#a7793aee80500d569fd572135e1290a63">communication_t</a>
+</li>
+<li>loop_secure()
+: <a class="el" href="classcommunication__t.html#a24dfddbdc8170f35babb88567d938338">communication_t</a>
 </li>
 </ul>
 
@@ -242,7 +266,7 @@ $(function() {
 </li>
 <li>operator[]()
 : <a class="el" href="classcyclic__array__t.html#a33e4450563abaf27e7a4a9849b091e44">cyclic_array_t&lt; T, N &gt;</a>
-, <a class="el" href="classhigh__gain__obs__t.html#a41fec13edf5055b0e6585583363e41b5">high_gain_obs_t&lt; MILLIS &gt;</a>
+, <a class="el" href="classhigh__gain__obs__t.html#a56dd856fa17bae0287f7d1465c8ede33">high_gain_obs_t&lt; MILLIS &gt;</a>
 </li>
 </ul>
 
@@ -280,6 +304,9 @@ $(function() {
 <li>radio_t()
 : <a class="el" href="classradio__t.html#a656ba4a317da1f5ef33615172bfc7b16">radio_t</a>
 </li>
+<li>receive()
+: <a class="el" href="classcommunication__t.html#accf153852c5915acd092c666a84ae380">communication_t</a>
+</li>
 <li>register_callback()
 : <a class="el" href="classpwm__reader__attachable__t.html#a33f5499f2d8b4e7cdc0d899f0f607e37">pwm_reader_attachable_t</a>
 </li>
@@ -294,6 +321,9 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>send()
+: <a class="el" href="classcommunication__t.html#a88735bc055a7d5a3f3296ddfb57e6ec7">communication_t</a>
+</li>
 <li>servo_t()
 : <a class="el" href="classservo__t.html#aec47a20d3ed9c66ce00f569020d0ce2d">servo_t</a>
 </li>
@@ -301,9 +331,20 @@ $(function() {
 : <a class="el" href="classesc__t.html#ae64e17833907ebe670a8bc1d6b6eaa3e">esc_t</a>
 , <a class="el" href="classservo__t.html#ab5aecfee327ba33792f29ac6240e8535">servo_t</a>
 </li>
+<li>steer()
+: <a class="el" href="classcommunication__t.html#a0fe41a2a4daba13d36593ec718e9e8f0">communication_t</a>
+</li>
 <li>stop()
-: <a class="el" href="classesc__t.html#a198d807060f3dc13430d89081116c37d">esc_t</a>
+: <a class="el" href="classencoder__t.html#a9e8ba13053eeea462f3e128f962a5eb8">encoder_t</a>
+, <a class="el" href="classesc__t.html#a198d807060f3dc13430d89081116c37d">esc_t</a>
 , <a class="el" href="classservo__t.html#ad07a6309105cb11a07464cd1a33b9820">servo_t</a>
+</li>
+</ul>
+
+
+<h3><a id="index_t"></a>- t -</h3><ul>
+<li>traction()
+: <a class="el" href="classcommunication__t.html#a95e6470b76d88991c981b498a71e7dad">communication_t</a>
 </li>
 </ul>
 
@@ -319,7 +360,7 @@ $(function() {
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 11:52:43 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:31:50 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

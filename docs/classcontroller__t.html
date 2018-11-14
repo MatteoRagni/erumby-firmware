@@ -114,7 +114,7 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aa7375dbdb881f691a64cd94b25abc99c"><td class="memItemLeft" align="right" valign="top">pi_ctrl_t&lt; LOOP_TIMING &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller__t.html#aa7375dbdb881f691a64cd94b25abc99c">pi</a></td></tr>
+<tr class="memitem:aa7375dbdb881f691a64cd94b25abc99c"><td class="memItemLeft" align="right" valign="top">pi_ctrl_t&lt; <a class="el" href="configurations_8hpp.html#ae73518372704d184f3082009d5e40f09">LOOP_TIMING</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller__t.html#aa7375dbdb881f691a64cd94b25abc99c">pi</a></td></tr>
 <tr class="separator:aa7375dbdb881f691a64cd94b25abc99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3138e361a03474ae04084a8a199f93db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcontroller__t_1_1esc__sp__t.html">esc_sp_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcontroller__t.html#a3138e361a03474ae04084a8a199f93db">sp</a></td></tr>
 <tr class="separator:a3138e361a03474ae04084a8a199f93db"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,42 +122,46 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The actual ESC controller. </p>
 <p>The class implements the ESC control. The ESC control receives a <code>float</code> with the reference for the wheel speed and try to set the PWM pulse witdh in order to obtain such value.</p>
-<p>The scheme of the controller follows: </p><div class="fragment"><div class="line">                                                         +------------+</div><div class="line">                                            u in (0,1)   |            |       Output to ESC PWM pin</div><div class="line">                                          +-------------&gt;+ PWM_map(u) +------------------------------&gt;</div><div class="line">                +--------------+          |              |            |</div><div class="line">                |              | u_ff     |              +------------+</div><div class="line">       +-------&gt;+ PHI_INV(w_r) +------+   |</div><div class="line">       |        |              |      |   |</div><div class="line">       |        +--------------+      |   |                  Smith Predictor with a copy of the plant</div><div class="line">       |                              |   |</div><div class="line">       |        +--------------+      |   |   +--------+     +------------------+     +----------+</div><div class="line">       | +   e  |              | u_fb V+  |   |        |  q  |                  |  x  |          |</div><div class="line"> w_r --+-&gt;O-----+ PI Ctrl      +-----&gt;O---+--&gt;+ SAT(u) +----&gt;+ dx = -a x + a q  +--+-&gt;+ exp(-ds) +----+</div><div class="line">          ^-    |              |     +        |        |     |                  |  |  |          |    |</div><div class="line">          |     +--------------+              +--------+     +------------------+  |  +----------+    |</div><div class="line">          |                                                                        |                  |</div><div class="line">          |                                                           +--------+   |   Delay          |</div><div class="line">          |+                                                          |        |   |                  |</div><div class="line">          O&lt;----------------------------------------------------------+ PHI(w) +&lt;--+ x                |</div><div class="line">         +^                             w_sp                          |        |                      |</div><div class="line">          |                                                           +--------+                      |</div><div class="line">          |                                                                                           |</div><div class="line">          |                                                           +--------+                      |</div><div class="line">          |                                                           |        |                      |</div><div class="line">w_hg ----&gt;O&lt;----------------------------------------------------------+ PHI(w) +&lt;---------------------+</div><div class="line">         + -                            w_sp (delayed)                |        |     x (delayed)</div><div class="line">                                                                      +--------+</div></div><!-- fragment --><p>The controller is composed by several parts, and in particular we have as input to the scheme:</p><ul>
-<li><code>w_r</code> that is the reference set point</li>
-<li><code>w_hg</code> that is the estimation coming from the high gain observers in the <code><a class="el" href="classencoder__t.html">encoder_t</a></code>. To be precise \( \omega_{hg} = \frac{1}{2} ( \omega_{hg,left} + \omega_{hg,right} )\)</li>
-<li><code>w_sp</code> is the prediction of the speed of the wheel for the system without delay predicted by the Smith predictor. The plant is modeled as a 1 state wiener model: <p class="formulaDsp">
+<p>The scheme of the controller follows: </p><div class="image">
+<img src="controller.png" alt="controller.png"/>
+<div class="caption">
+Controller Scheme</div></div>
+<p> The controller is composed by several parts, and in particular we have as input to the scheme:</p><ul>
+<li>\(\omega_r\) that is the reference set point</li>
+<li>\(\omega_{hg}\) that is the estimation coming from the high gain observers in the <code><a class="el" href="classencoder__t.html">encoder_t</a></code>. To be precise \( \omega_{hg} = \frac{1}{2} ( \omega_{hg,left} + \omega_{hg,right} )\)</li>
+<li>\(\omega_{sp}\) is the prediction of the speed of the wheel for the system without delay predicted by the Smith predictor. The plant is modeled as a 1 state wiener model: <p class="formulaDsp">
 \[ \dot{x} = - a x + a \mathrm{sat}(u) \]
 </p>
  with the nonlinear output: <p class="formulaDsp">
 \[ \omega_{sp} = \phi(u) = \frac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2} \]
 </p>
- the parameters \( a, c_1, c_2 \) should be identified and inserted in the <code>configure.hpp</code> file.</li>
-<li><code>u</code> is the output to be sent to the esc as a PWM.</li>
+ the parameters \(a, c_1, c_2\) should be identified and inserted in the <code>configure.hpp</code> file.</li>
+<li>\(u\) is the output to be sent to the esc as a PWM.</li>
 </ul>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Param  </th><th class="markdownTableHeadNone">Define  </th><th class="markdownTableHeadNone">Description   </th></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">\( a \)  </td><td class="markdownTableBodyNone"><code>CTRL_MODEL_A</code>  </td><td class="markdownTableBodyNone">Dynamical system pole   </td></tr>
+<td class="markdownTableBodyNone">\(a\)  </td><td class="markdownTableBodyNone"><code>CTRL_MODEL_A</code>  </td><td class="markdownTableBodyNone">Dynamical system pole   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
-<td class="markdownTableBodyNone">\( c_1 \)  </td><td class="markdownTableBodyNone"><code>CTRL_NONLIN_A</code>  </td><td class="markdownTableBodyNone">Non linearity first coefficient   </td></tr>
+<td class="markdownTableBodyNone">\(c_1\)  </td><td class="markdownTableBodyNone"><code>CTRL_NONLIN_A</code>  </td><td class="markdownTableBodyNone">Non linearity first coefficient   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">\( c_2 \)  </td><td class="markdownTableBodyNone"><code>CTRL_NONLIN_B</code>  </td><td class="markdownTableBodyNone">Non linearity second coefficient   </td></tr>
+<td class="markdownTableBodyNone">\(c_2\)  </td><td class="markdownTableBodyNone"><code>CTRL_NONLIN_B</code>  </td><td class="markdownTableBodyNone">Non linearity second coefficient   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
-<td class="markdownTableBodyNone">\( d \)  </td><td class="markdownTableBodyNone"><code>CTRL_SYSTEM_DELAY</code>  </td><td class="markdownTableBodyNone">Delay: ( \(mod(d,t_s) = 0\)! (in ms)   </td></tr>
+<td class="markdownTableBodyNone">\(d\)  </td><td class="markdownTableBodyNone"><code>CTRL_SYSTEM_DELAY</code>  </td><td class="markdownTableBodyNone">Delay: ( \(mod(d,t_s) = 0\)! (in ms)   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">\( t_s \)  </td><td class="markdownTableBodyNone"><code>LOOP_TIMING</code>  </td><td class="markdownTableBodyNone">Time step for integration (in ms)   </td></tr>
+<td class="markdownTableBodyNone">\(t_s\)  </td><td class="markdownTableBodyNone"><code>LOOP_TIMING</code>  </td><td class="markdownTableBodyNone">Time step for integration (in ms)   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
-<td class="markdownTableBodyNone">\( k_p \)  </td><td class="markdownTableBodyNone"><code>CTRL_KP</code>  </td><td class="markdownTableBodyNone">PI controller proportional gain   </td></tr>
+<td class="markdownTableBodyNone">\(k_p\)  </td><td class="markdownTableBodyNone"><code>CTRL_KP</code>  </td><td class="markdownTableBodyNone">PI controller proportional gain   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">\( k_i \)  </td><td class="markdownTableBodyNone"><code>CTRL_KI</code>  </td><td class="markdownTableBodyNone">PI controller integrative gain   </td></tr>
+<td class="markdownTableBodyNone">\(k_i\)  </td><td class="markdownTableBodyNone"><code>CTRL_KI</code>  </td><td class="markdownTableBodyNone">PI controller integrative gain   </td></tr>
 </table>
 <p><b>DELAY and LOOP_TIMING</b>: the controller has been built with the idea of running in the real time loop, which runs approximatively a 250Hz (4 ms). The Delay identified for the system is nominally 80 ms. Please notice that the integer division between delay and loop timing must have no residuals (<code>CTRL_SYSTEM_DELAY % LOOP_TIMING == 0</code>), in order to discretize correctly the delay.</p>
 <dl class="section warning"><dt>Warning</dt><dd>The delay is a characteristic of this particular system. It is not possible to eliminate it via software.</dd>
 <dd>
 This class is <b>taylored made for our applications and contains several hardcoded constants</b>. It also implements as static methods the non linearities (direct and inverse) wich are used in the feed forward controller and in the Smith predictor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00419">419</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00421">421</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1cf53b3b04f2b5cc21872500bf9dc528"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1cf53b3b04f2b5cc21872500bf9dc528">&#9670;&nbsp;</a></span>controller_t()</h2>
@@ -185,7 +189,7 @@ This class is <b>taylored made for our applications and contains several hardcod
 <p>Empty constructor. </p>
 <dl class="section warning"><dt>Warning</dt><dd>It uses the hardcoded constants of the configuration file. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00488">488</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00490">490</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +231,7 @@ This class is <b>taylored made for our applications and contains several hardcod
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>output of the non linearity </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00434">434</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00436">436</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -268,7 +272,7 @@ This class is <b>taylored made for our applications and contains several hardcod
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>output of the inverse of the non linearity </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00449">449</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00451">451</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -317,7 +321,7 @@ This class is <b>taylored made for our applications and contains several hardcod
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the current value of the input for controlling the speed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00500">500</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00502">502</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -332,7 +336,7 @@ This class is <b>taylored made for our applications and contains several hardcod
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pi_ctrl_t&lt; LOOP_TIMING &gt; controller_t::pi</td>
+          <td class="memname">pi_ctrl_t&lt; <a class="el" href="configurations_8hpp.html#ae73518372704d184f3082009d5e40f09">LOOP_TIMING</a> &gt; controller_t::pi</td>
         </tr>
       </table>
   </td>
@@ -343,7 +347,7 @@ This class is <b>taylored made for our applications and contains several hardcod
 </div><div class="memdoc">
 <p>PI controller block </p>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00480">480</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00482">482</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -368,7 +372,7 @@ This class is <b>taylored made for our applications and contains several hardcod
 </div><div class="memdoc">
 <p>Smith predictor block </p>
 
-<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00481">481</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="controller__t_8hpp_source.html#l00483">483</a> of file <a class="el" href="controller__t_8hpp_source.html">controller_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -378,7 +382,7 @@ This class is <b>taylored made for our applications and contains several hardcod
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 11:52:43 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:31:50 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -76,6 +76,7 @@ typedef int16_t omega_t;   /**< types for angular speed in integer */
  */
 class erumby_base_t {
  public:
+  ///! @cond
   erumby_base_t(){};
   virtual erumby_mode_t mode() = 0;
   virtual float omega_r() = 0;
@@ -90,6 +91,7 @@ class erumby_base_t {
   
   virtual void alarm(const char* who) = 0;
   virtual void alarm(const char * who, const char * what) = 0;
+  ///! @endcond
 };
 
 #endif /* TYPES_HPP */

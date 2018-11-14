@@ -21,6 +21,7 @@ var searchData=
   ['push_5fback',['push_back',['../classcyclic__array__t.html#aa87add9aa1679af31a1a663207446c5f',1,'cyclic_array_t']]],
   ['pwm',['pwm',['../classencoder__t.html#ae974a0f7cc4cc0578f10851059c9f20a',1,'encoder_t']]],
   ['pwm_5fattachable_5fcallback_5ft',['pwm_attachable_callback_t',['../pwm__reader__t_8hpp.html#a9d58be16c7d46826ab3b7d6372ea9991',1,'pwm_reader_t.hpp']]],
+  ['pwm_5ffrequency',['PWM_FREQUENCY',['../configurations_8hpp.html#a6177eb86ee16a1956c81749e4e332cf0',1,'configurations.hpp']]],
   ['pwm_5fport_5freader_5ft',['pwm_port_reader_t',['../pwm__reader__t_8hpp.html#a136146aa7bb5caca5374e70d4792a93c',1,'pwm_reader_t.hpp']]],
   ['pwm_5freader_5fattachable_5ft',['pwm_reader_attachable_t',['../classpwm__reader__attachable__t.html',1,'pwm_reader_attachable_t'],['../classpwm__reader__attachable__t.html#a6b56258dcaf943cf04b53760ddd1db38',1,'pwm_reader_attachable_t::pwm_reader_attachable_t()']]],
   ['pwm_5freader_5ft',['pwm_reader_t',['../classpwm__reader__t.html',1,'pwm_reader_t'],['../classpwm__reader__t.html#ae65e9b7a68de73075432b2e98202417d',1,'pwm_reader_t::pwm_reader_t()']]],

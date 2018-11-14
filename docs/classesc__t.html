@@ -165,7 +165,7 @@ Private Attributes</h2></td></tr>
 
 <p>Constructor for the esc object. </p>
 <p>The esc object initializes the value for the ESC PWM and sets the erumby instance pointer. The constructor also initializes the frequency of the PWM pin for the esc. In order to set the frequency, the timers should be initialized by the <code>e_rumby</code> constructor.</p>
-<p>At the end of the constructor the <code>alarm</code> is called in order to be sure to write immediately on the PWM the idle values.</p>
+<p>At the end of the constructor the <code>stop</code> is called in order to be sure to write immediately on the PWM the idle values.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">m_</td><td>pointer to the main instance of <code>erumby_y</code> </td></tr>
@@ -428,7 +428,7 @@ Private Attributes</h2></td></tr>
 
 <p>Returns minimum PWM value possible. </p>
 <dl class="section return"><dt>Returns</dt><dd>the minim value for the ESC that it is possible to write </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>DUTY_ESC_MIN </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="configurations_8hpp.html#a59ab845c181070d05ccdde38b6803969">DUTY_ESC_MIN</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="esc__t_8hpp_source.html#l00172">172</a> of file <a class="el" href="esc__t_8hpp_source.html">esc_t.hpp</a>.</p>
 
@@ -459,7 +459,7 @@ Private Attributes</h2></td></tr>
 
 <p>Returns maximum PWM value possible. </p>
 <dl class="section return"><dt>Returns</dt><dd>the maximum value it is possible to write </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>DUTY_ESC_MIN </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="configurations_8hpp.html#a59ab845c181070d05ccdde38b6803969">DUTY_ESC_MIN</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="esc__t_8hpp_source.html#l00178">178</a> of file <a class="el" href="esc__t_8hpp_source.html">esc_t.hpp</a>.</p>
 
@@ -490,7 +490,7 @@ Private Attributes</h2></td></tr>
 
 <p>Returns the idle PWM value. </p>
 <dl class="section return"><dt>Returns</dt><dd>the PWM value that stops the motor </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>DUTY_ESC_IDLE </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="configurations_8hpp.html#a8dbfbd69ffd8717a63a55bcf22747b54">DUTY_ESC_IDLE</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="esc__t_8hpp_source.html#l00184">184</a> of file <a class="el" href="esc__t_8hpp_source.html">esc_t.hpp</a>.</p>
 
@@ -516,7 +516,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Pin for the ESC, this is specified in <code><a class="el" href="configurations_8hpp_source.html">configurations.hpp</a></code> </p>
+<p>Pin for the ESC, this is specified in <code><a class="el" href="configurations_8hpp.html">configurations.hpp</a></code> </p>
 
 <p class="definition">Definition at line <a class="el" href="esc__t_8hpp_source.html#l00032">32</a> of file <a class="el" href="esc__t_8hpp_source.html">esc_t.hpp</a>.</p>
 
@@ -628,7 +628,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 11:52:43 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:31:50 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -50,47 +50,16 @@ class erumby_t : public erumby_base_t {
  public:
   static erumby_t* create_erumby();
 
+  erumby_mode_t mode() override { return radio->get_mode(); }
+
   /** \brief Main loop for erumby
    * 
    * \callgraph
    */
-  void loop() {
-    if (mode() == Auto) {
-      loop_auto();
-      return;
-    }
-    if (mode() == Manual) {
-      loop_secure();
-      return;
-    }
-    loop_secure();
-  }
-
-  void loop_secure() {
-    enc_l->loop();
-    enc_r->loop();
-    comm->loop_secure();
-    radio->loop();
-    esc->stop();
-    servo->stop();
-  }
-
-  void loop_auto() {
-    enc_l->loop();
-    enc_r->loop();
-    comm->loop_auto();
-    radio->loop();
-    esc->loop();
-    servo->loop();
-  }
-
-  erumby_mode_t mode() override { return radio->get_mode(); }
-
-  void stop() {
-    esc->stop();
-    servo->stop();
-  }
-
+  void loop();
+  void loop_secure();
+  void loop_auto();
+  void stop();
 
   void alarm(const char* who, const char* what) override;
   void alarm(const char* who) override { alarm(who, "Unknown reason"); }
@@ -100,10 +69,6 @@ class erumby_t : public erumby_base_t {
   float omega_r() override { return enc_r->get_omega(); }
 
   float omega() override { return (omega_l() + omega_r()) / 2.0; }
-
-  counter_t counter_l() { return enc_l->get_counter(); }
-
-  counter_t counter_r() { return enc_r->get_counter(); }
 
   const cmd_t traction() const override { return esc->get(); }
 

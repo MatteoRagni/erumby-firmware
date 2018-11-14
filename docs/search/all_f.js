@@ -1,8 +1,10 @@
 var searchData=
 [
   ['secure',['Secure',['../types_8hpp.html#a5bb31a0aca77e366fb23e059dd4013eaa405882d26ce5b790f92b42aa75cd0a02',1,'types.hpp']]],
-  ['self',['self',['../classradio__t.html#ad2a5c0d3ce4f5e25ae48e6204230d8db',1,'radio_t']]],
-  ['servo',['servo',['../classerumby__t.html#a300192a06f42b1f6dc24a19313e8e5ee',1,'erumby_t']]],
+  ['self',['self',['../classcommunication__t.html#a3a5a6875dfd3f22070fd3e5ce57e507b',1,'communication_t::self()'],['../classradio__t.html#ad2a5c0d3ce4f5e25ae48e6204230d8db',1,'radio_t::self()']]],
+  ['send',['send',['../classcommunication__t.html#a88735bc055a7d5a3f3296ddfb57e6ec7',1,'communication_t']]],
+  ['serial_5fspeed',['SERIAL_SPEED',['../configurations_8hpp.html#a4081bc1d938e0d9b2b0941e3a1143498',1,'configurations.hpp']]],
+  ['servo',['servo',['../classerumby__t.html#a300192a06f42b1f6dc24a19313e8e5ee',1,'erumby_t::servo()'],['../configurations_8hpp.html#a316d1bbf3dcf9c43e56fe4e25addf626',1,'SERVO():&#160;configurations.hpp']]],
   ['servo_5ft',['servo_t',['../classservo__t.html',1,'servo_t'],['../classservo__t.html#aec47a20d3ed9c66ce00f569020d0ce2d',1,'servo_t::servo_t()']]],
   ['servo_5ft_2ehpp',['servo_t.hpp',['../servo__t_8hpp.html',1,'']]],
   ['set',['set',['../classesc__t.html#ae64e17833907ebe670a8bc1d6b6eaa3e',1,'esc_t::set()'],['../classservo__t.html#ab5aecfee327ba33792f29ac6240e8535',1,'servo_t::set()']]],
@@ -13,6 +15,7 @@ var searchData=
   ['state',['state',['../controller__t_8hpp.html#a62d327383dd7da6b72813a42096fb929',1,'controller_t.hpp']]],
   ['state_5fpredict',['state_predict',['../controller__t_8hpp.html#ac87719344d07f205f6cd25778e60b598',1,'controller_t.hpp']]],
   ['state_5fsize',['state_size',['../classhigh__gain__obs__t.html#ae266079936ce573bddc546978e7768b6',1,'high_gain_obs_t']]],
-  ['steer',['steer',['../classradio__t.html#a0777a1186e23fdf63601ce9dad0ddfa5',1,'radio_t']]],
-  ['stop',['stop',['../classesc__t.html#a198d807060f3dc13430d89081116c37d',1,'esc_t::stop()'],['../classservo__t.html#ad07a6309105cb11a07464cd1a33b9820',1,'servo_t::stop()']]]
+  ['steer',['steer',['../classradio__t.html#a0777a1186e23fdf63601ce9dad0ddfa5',1,'radio_t::steer()'],['../classcommunication__t.html#a0fe41a2a4daba13d36593ec718e9e8f0',1,'communication_t::steer()']]],
+  ['steering',['steering',['../structcommunication__t_1_1indata__t.html#a397927c30553734d06d58eaa3c904b32',1,'communication_t::indata_t::steering()'],['../configurations_8hpp.html#a0e96152ad5357393ee0ccc6444112737',1,'STEERING():&#160;configurations.hpp']]],
+  ['stop',['stop',['../classencoder__t.html#a9e8ba13053eeea462f3e128f962a5eb8',1,'encoder_t::stop()'],['../classesc__t.html#a198d807060f3dc13430d89081116c37d',1,'esc_t::stop()'],['../classservo__t.html#ad07a6309105cb11a07464cd1a33b9820',1,'servo_t::stop()']]]
 ];

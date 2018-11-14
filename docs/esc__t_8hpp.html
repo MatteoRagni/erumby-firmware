@@ -76,7 +76,7 @@ $(function() {
 <div class="title">esc_t.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;configurations.hpp&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="configurations_8hpp_source.html">configurations.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="types_8hpp_source.html">types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="lookup__table__t_8hpp_source.html">lookup_table_t.hpp</a>&quot;</code><br />
 </div>
@@ -90,7 +90,38 @@ Classes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Davide Piscini, Matteo Ragni</dd></dl>
-<p>Class for the i2c communication between</p>
+<p>The class implements the communication bus between the Raspberry PI and the low level control. The communication as for now is in a developing stage, and due to limitations in the Simulink schemes, we can only send a coherent array of data (data all of the same type). As for now the data in input is a <code>int16_t</code>, while the output data are <code>uint16_t</code>.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Convert the input and output structs in unions that uses float for data in such a way it is not necessary to swap lsb and msb, and reduce the resource for receiving data.</dd></dl>
+<p>The current structure for the <b>input data</b>:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"><code>indata_t</code> field  </th><th class="markdownTableHeadNone">Description   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>steering</code>  </td><td class="markdownTableBodyNone">PWM value to write to steering   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>traction</code>  </td><td class="markdownTableBodyNone">Value for wheel speed if positive, value for ESC pwm if negative   </td></tr>
+</table>
+<p>The <code>traction</code> value, if positive sends the required wheel speed for the closed loop controller, while the negative value sends directly a value to the ESC.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The reference in wheel speed is: <p class="formulaDsp">
+\[\omega_{ref} = \frac{\mathrm{traction}}{100}\;(rad/s)\]
+</p>
+</dd></dl>
+<p>For the PWM values, please check the file <code><a class="el" href="configurations_8hpp.html">configurations.hpp</a></code>.</p>
+<p>The current structure for the <b>output data</b>:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"><code>outdata_t</code> field  </th><th class="markdownTableHeadNone">Description   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>omega_rr</code>  </td><td class="markdownTableBodyNone">Speed of the right wheel   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>omega_rl</code>  </td><td class="markdownTableBodyNone">Speed of the left wheel   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>input_esc</code>  </td><td class="markdownTableBodyNone">Current PWM written on the ESC   </td></tr>
+</table>
+<dl class="section warning"><dt>Warning</dt><dd>The speed sent out is in the form: <p class="formulaDsp">
+\begin{align} \textrm{omega\_rr} &amp; = \mathrm{round}\left( 100 \omega_{right} \right) \textrm{omega\_rl} &amp; = \mathrm{round}\left( 100 \omega_{left} \right) \end{align}
+</p>
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Matteo Ragni</dd></dl>
 <p>** Class for the ESC (Electronic speed controller)**</p>
 <p>The class implements the software representation of the Electronic Speed Controller of the car. It takes a PWM as input and sets a voltage on the motor input in order to get movement. The ESC class also implements some security features such raising an alarm when the input is out the boundaries. </p>
@@ -99,7 +130,7 @@ Classes</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 11:52:43 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:31:49 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

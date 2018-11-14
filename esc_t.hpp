@@ -64,7 +64,7 @@ class esc_t {
    * In order to set the frequency, the timers should be initialized
    * by the \p e_rumby constructor.
    *
-   * At the end of the constructor the \p alarm is called in order to be sure
+   * At the end of the constructor the \p stop is called in order to be sure
    * to write immediately on the PWM the idle values.
    * 
    * \param m_ pointer to the main instance of \p erumby_y
