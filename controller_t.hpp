@@ -99,7 +99,7 @@
  * \f{align}
  *   x_{k} & = x_{k - 1} + t_s e{k} \\
  *   u_{k} & = k_i x_{k - 1} + (k_p + t_s k_i) e_{k}
- * \f{align}
+ * \f}
  * 
  * Usage example:
  * @code
@@ -146,7 +146,7 @@ class pi_ctrl_t {
    * \f{align}
    * k_p & = k_{p,in} + t_s k_{i,in} \\
    * k_i & = k_{i,in}
-   * \f{align}
+   * \f}
    * 
    * \param kp_ \f$ k_{p,in} \f$: proportional gain of the controller
    * \param ki_ \f$ k_{i,in} \f$: integrative gain of the controller 
@@ -189,10 +189,10 @@ class pi_ctrl_t {
  * \f{align}
  *  x_{1}^{k+1} &= x_2^{k} \\
  *  x_{2}^{k+1} &= x_3^{k}  \\
- *  & \vdots
+ *  & \vdots \\
  *  x_{n-1}^{k+1} &= x_n^{k} \\
  *  x_n^{k+1} &= u
- * \f{align}
+ * \f}
  * 
  * Using templates for the creation of this kind of delay has an advantage
  * in terms of code efficiency, but as drawback the delay is fixed at 
@@ -214,7 +214,7 @@ using time_delay_t = cyclic_array_t< float, DELAY / MILLIS >;
  * \f{align}
  *   \dot{x}(t) & = - a x(t) + a \mathrm{sat}(u(t - d)) \\
  *   y(t) & = \phi(x(t))
- * \f{align}
+ * \f}
  * This class is taylored made for our ESC system. The integration of this 
  * system is performed with a Backward Euler
  * \f$
@@ -225,19 +225,19 @@ using time_delay_t = cyclic_array_t< float, DELAY / MILLIS >;
  *  q_{k} & = \mathrm{sat}_{[0,1]}(t_{k}) \\
  *  x_{k} & = a_{sp} x_{k-1} + b_{sp} q_{k} \\
  *  y_{k} & = \phi(x_{k}) = \frac{\sqrt{c_1^2 + 4 c_2 x_{k}} - c_1}{2 c_2}
- * \f{align}
+ * \f}
  * where:
  * \f{align}
  *  a_{sp} = (1 + a t_s)^{-1}
  *  b_{sp} = a_{sp} a t_s
- * \f{align}
+ * \f}
  * 
  * The actual output in the control loop, for a discretization of the delay 
  * in a cyclic array with size \f$ n = \mathrm{floor}(d / t_s) \f$, follows:
  * \f{align}
  *  \omega &= y_{k - n} \\
  *  \omega_{predict} &= y{k} 
- * \f{align}
+ * \f}
  * 
  * \warning The non linearity is a **virtual** method. Thus it should
  * be redefined in the controller.
@@ -262,7 +262,7 @@ class smith_predictor_t {
    * \f{align}
    *  a_{sp} = (1 + a t_s)^{-1}
    *  b_{sp} = a_{sp} a t_s
-   * \f{align}
+   * \f}
    * which are the discretized (with Backward Euler) counterpart for the linear
    * plant:
    * \f[
@@ -325,7 +325,7 @@ class smith_predictor_t {
    * \f{align}
    *  a_{sp} = (1 + a t_s)^{-1}
    *  b_{sp} = a_{sp} a t_s
-   * \f{align}
+   * \f}
    * which are the discretized (with Backward Euler) counterpart for the linear
    * plant:
    * \f[

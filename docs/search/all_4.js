@@ -1,6 +1,7 @@
 var searchData=
 [
   ['edge_5ftime',['edge_time',['../classpwm__reader__t.html#aa30a2fd2660d547d3a39e5ab25c7f4f6',1,'pwm_reader_t::edge_time()'],['../classpwm__reader__attachable__t.html#a3c89e6d0ce021982b8df34062c3f614c',1,'pwm_reader_attachable_t::edge_time()']]],
+  ['ei',['ei',['../classpi__ctrl__t.html#a2e5119ec74f40234e75546857b63bf76',1,'pi_ctrl_t']]],
   ['enc_5fl',['enc_l',['../classerumby__t.html#ac394eb4062b80e1ee71a21244f423fba',1,'erumby_t']]],
   ['enc_5fr',['enc_r',['../classerumby__t.html#ad032bcc71464c11cd444bfdedc16fd6e',1,'erumby_t']]],
   ['encoder_5fquantization',['ENCODER_QUANTIZATION',['../configurations_8hpp.html#a26543c232fb9a1a5d6d5aaa0a309cb81',1,'configurations.hpp']]],

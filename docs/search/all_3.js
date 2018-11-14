@@ -1,6 +1,8 @@
 var searchData=
 [
+  ['d',['d',['../classsmith__predictor__t.html#ae015459ed0087bd37b8365a381d734d7',1,'smith_predictor_t']]],
   ['data',['data',['../classcyclic__array__t.html#ad41c5dfbc613f80193e798481181d2f7',1,'cyclic_array_t']]],
+  ['delay',['delay',['../classsmith__predictor__t.html#a7f13eb56ad64fc962a05ac3a05e8940f',1,'smith_predictor_t']]],
   ['discretize',['discretize',['../classhigh__gain__obs__t.html#a18c75650b227b68c29eb530e948b735a',1,'high_gain_obs_t']]],
   ['duty_5fesc_5fidle',['DUTY_ESC_IDLE',['../configurations_8hpp.html#a8dbfbd69ffd8717a63a55bcf22747b54',1,'configurations.hpp']]],
   ['duty_5fesc_5fmax',['DUTY_ESC_MAX',['../configurations_8hpp.html#a3925aec17ee6684aeb6ae0bf1ae4aff3',1,'configurations.hpp']]],

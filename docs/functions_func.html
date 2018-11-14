@@ -141,6 +141,10 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>gain()
+: <a class="el" href="classpi__ctrl__t.html#a7a19cb6e67f9d64f91dc6620ce6e3cb5">pi_ctrl_t&lt; MILLIS &gt;</a>
+, <a class="el" href="classsmith__predictor__t.html#a0d8915d40e4395b894a308fa9531be8a">smith_predictor_t&lt; MILLIS, DELAY &gt;</a>
+</li>
 <li>get()
 : <a class="el" href="classesc__t.html#aa4e440a4281e7a252f4e364469769ef3">esc_t</a>
 , <a class="el" href="classservo__t.html#aaa0ea31bdfec1aea06889035674d6120">servo_t</a>
@@ -260,13 +264,15 @@ $(function() {
 : <a class="el" href="classcontroller__t.html#ae1dc5a6749e93025707ce247f97b3fce">controller_t</a>
 , <a class="el" href="classhigh__gain__obs__t.html#aa0b3508bdeef5e5f46f86eee244c215f">high_gain_obs_t&lt; MILLIS &gt;</a>
 , <a class="el" href="classlookup__table__t.html#a4040aa07a1b6aa8d82f7699c3be0f58a">lookup_table_t&lt; T, B &gt;</a>
+, <a class="el" href="classpi__ctrl__t.html#a3514c99c72db99f5f61e77339ecf94be">pi_ctrl_t&lt; MILLIS &gt;</a>
+, <a class="el" href="classsmith__predictor__t.html#a7265343eb71ef531b14246ae553cc2ff">smith_predictor_t&lt; MILLIS, DELAY &gt;</a>
 </li>
 <li>operator=()
 : <a class="el" href="classcyclic__array__t.html#a642c0a7ebd98b6d5518705786a4a11b2">cyclic_array_t&lt; T, N &gt;</a>
 </li>
 <li>operator[]()
 : <a class="el" href="classcyclic__array__t.html#a33e4450563abaf27e7a4a9849b091e44">cyclic_array_t&lt; T, N &gt;</a>
-, <a class="el" href="classhigh__gain__obs__t.html#a56dd856fa17bae0287f7d1465c8ede33">high_gain_obs_t&lt; MILLIS &gt;</a>
+, <a class="el" href="classhigh__gain__obs__t.html#a41fec13edf5055b0e6585583363e41b5">high_gain_obs_t&lt; MILLIS &gt;</a>
 </li>
 </ul>
 
@@ -275,9 +281,13 @@ $(function() {
 <li>phi()
 : <a class="el" href="classcontroller__t_1_1esc__sp__t.html#a8f9fa621ac45b8e99cf9480a8bc79dd7">controller_t::esc_sp_t</a>
 , <a class="el" href="classcontroller__t.html#a47e5f8a205d34f71489f3b752858f26e">controller_t</a>
+, <a class="el" href="classsmith__predictor__t.html#a3d55ee7ff3583ead9138a1ecbf5017fe">smith_predictor_t&lt; MILLIS, DELAY &gt;</a>
 </li>
 <li>phi_inv()
 : <a class="el" href="classcontroller__t.html#a23614eb1dce15ea11baaf3e217ebdc3a">controller_t</a>
+</li>
+<li>pi_ctrl_t()
+: <a class="el" href="classpi__ctrl__t.html#a47f7b45c9cbe667cd1cc3519fad36569">pi_ctrl_t&lt; MILLIS &gt;</a>
 </li>
 <li>pin_map()
 : <a class="el" href="classpwm__reader__t.html#a8e7e182006aed49f72d21c119d41bcd4">pwm_reader_t</a>
@@ -313,6 +323,8 @@ $(function() {
 <li>reset()
 : <a class="el" href="classcontroller__t.html#a5307b4446e8079210e4246559a4fca3f">controller_t</a>
 , <a class="el" href="classhigh__gain__obs__t.html#ad9c8bc28c4eaae13510a4a67bab78ad2">high_gain_obs_t&lt; MILLIS &gt;</a>
+, <a class="el" href="classpi__ctrl__t.html#afcb75611bc4facf1231331d342511ec1">pi_ctrl_t&lt; MILLIS &gt;</a>
+, <a class="el" href="classsmith__predictor__t.html#af325cf7ae7155c9089495418f7b33db7">smith_predictor_t&lt; MILLIS, DELAY &gt;</a>
 </li>
 <li>reset_counter()
 : <a class="el" href="classpwm__reader__t.html#ab37b704ba05a157d6467c14ef76c14bc">pwm_reader_t</a>
@@ -330,6 +342,15 @@ $(function() {
 <li>set()
 : <a class="el" href="classesc__t.html#ae64e17833907ebe670a8bc1d6b6eaa3e">esc_t</a>
 , <a class="el" href="classservo__t.html#ab5aecfee327ba33792f29ac6240e8535">servo_t</a>
+</li>
+<li>smith_predictor_t()
+: <a class="el" href="classsmith__predictor__t.html#a4f1dd8dbb51a9d5c26c1ac93529ca296">smith_predictor_t&lt; MILLIS, DELAY &gt;</a>
+</li>
+<li>state()
+: <a class="el" href="classsmith__predictor__t.html#adbca681e44e1afeb0030bec7bb376166">smith_predictor_t&lt; MILLIS, DELAY &gt;</a>
+</li>
+<li>state_predict()
+: <a class="el" href="classsmith__predictor__t.html#ac550ab292ba1466af6b08f305bf88742">smith_predictor_t&lt; MILLIS, DELAY &gt;</a>
 </li>
 <li>steer()
 : <a class="el" href="classcommunication__t.html#a0fe41a2a4daba13d36593ec718e9e8f0">communication_t</a>
@@ -360,7 +381,7 @@ $(function() {
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 15:31:50 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:36:00 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gain',['gain',['../controller__t_8hpp.html#a55de7e7f3dc8c8ba62167de65dfeb000',1,'controller_t.hpp']]],
+  ['gain',['gain',['../classpi__ctrl__t.html#a7a19cb6e67f9d64f91dc6620ce6e3cb5',1,'pi_ctrl_t::gain()'],['../classsmith__predictor__t.html#a0d8915d40e4395b894a308fa9531be8a',1,'smith_predictor_t::gain()']]],
   ['get',['get',['../classesc__t.html#aa4e440a4281e7a252f4e364469769ef3',1,'esc_t::get()'],['../classservo__t.html#aaa0ea31bdfec1aea06889035674d6120',1,'servo_t::get()']]],
   ['get_5fcenter',['get_center',['../classservo__t.html#a72ee9c58ec0061681f7bffacef5ea6dc',1,'servo_t']]],
   ['get_5fcomms',['get_comms',['../classcommunication__t.html#a2436e1714079a11bcdf0c85c6dbde5d5',1,'communication_t']]],

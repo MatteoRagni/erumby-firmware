@@ -1,10 +1,22 @@
 var searchData=
 [
-  ['theta',['theta',['../classencoder__t.html#a1a76ca800ab0b9c5d2473292fe24f90d',1,'encoder_t']]],
-  ['time_5fdelay_5ft',['time_delay_t',['../controller__t_8hpp.html#a68fa5fb51e0e0b733978cd8d35f60ee0',1,'controller_t.hpp']]],
-  ['timing_5ft',['timing_t',['../types_8hpp.html#a7ea837fecbc6a0f0526fa7cdeda74068',1,'types.hpp']]],
-  ['todo_20list',['Todo List',['../todo.html',1,'']]],
-  ['traction',['traction',['../structcommunication__t_1_1indata__t.html#aced272aa6c51af8338c52b6c4914a75e',1,'communication_t::indata_t::traction()'],['../classcommunication__t.html#a95e6470b76d88991c981b498a71e7dad',1,'communication_t::traction()'],['../configurations_8hpp.html#a2884dc63f696b08d43225b18b40b7a00',1,'TRACTION():&#160;configurations.hpp']]],
-  ['ts',['ts',['../classhigh__gain__obs__t.html#a556520ac7f8c1a9680e6f1c72a536b7a',1,'high_gain_obs_t']]],
-  ['types_2ehpp',['types.hpp',['../types_8hpp.html',1,'']]]
+  ['secure',['Secure',['../types_8hpp.html#a5bb31a0aca77e366fb23e059dd4013eaa405882d26ce5b790f92b42aa75cd0a02',1,'types.hpp']]],
+  ['self',['self',['../classcommunication__t.html#a3a5a6875dfd3f22070fd3e5ce57e507b',1,'communication_t::self()'],['../classradio__t.html#ad2a5c0d3ce4f5e25ae48e6204230d8db',1,'radio_t::self()']]],
+  ['send',['send',['../classcommunication__t.html#a88735bc055a7d5a3f3296ddfb57e6ec7',1,'communication_t']]],
+  ['serial_5fspeed',['SERIAL_SPEED',['../configurations_8hpp.html#a4081bc1d938e0d9b2b0941e3a1143498',1,'configurations.hpp']]],
+  ['servo',['servo',['../classerumby__t.html#a300192a06f42b1f6dc24a19313e8e5ee',1,'erumby_t::servo()'],['../configurations_8hpp.html#a316d1bbf3dcf9c43e56fe4e25addf626',1,'SERVO():&#160;configurations.hpp']]],
+  ['servo_5ft',['servo_t',['../classservo__t.html',1,'servo_t'],['../classservo__t.html#aec47a20d3ed9c66ce00f569020d0ce2d',1,'servo_t::servo_t()']]],
+  ['servo_5ft_2ehpp',['servo_t.hpp',['../servo__t_8hpp.html',1,'']]],
+  ['set',['set',['../classesc__t.html#ae64e17833907ebe670a8bc1d6b6eaa3e',1,'esc_t::set()'],['../classservo__t.html#ab5aecfee327ba33792f29ac6240e8535',1,'servo_t::set()']]],
+  ['size',['size',['../classcyclic__array__t.html#abd2c28a25db696e4924d1e4cca90f25a',1,'cyclic_array_t']]],
+  ['smith_5fpredictor_5ft',['smith_predictor_t',['../classsmith__predictor__t.html',1,'smith_predictor_t&lt; MILLIS, DELAY &gt;'],['../classsmith__predictor__t.html#a4f1dd8dbb51a9d5c26c1ac93529ca296',1,'smith_predictor_t::smith_predictor_t()'],['../classsmith__predictor__t.html#adcfb74b86fbe8eddda3e85b1f9e61a68',1,'smith_predictor_t::smith_predictor_t(float a)']]],
+  ['smith_5fpredictor_5ft_3c_20loop_5ftiming_2c_20ctrl_5fsystem_5fdelay_20_3e',['smith_predictor_t&lt; LOOP_TIMING, CTRL_SYSTEM_DELAY &gt;',['../classsmith__predictor__t.html',1,'']]],
+  ['sp',['sp',['../classcontroller__t.html#a3138e361a03474ae04084a8a199f93db',1,'controller_t']]],
+  ['speed_5fctrl',['speed_ctrl',['../classerumby__t.html#ae3789c7b71d44bd8236771f02681f580',1,'erumby_t']]],
+  ['state',['state',['../classsmith__predictor__t.html#adbca681e44e1afeb0030bec7bb376166',1,'smith_predictor_t']]],
+  ['state_5fpredict',['state_predict',['../classsmith__predictor__t.html#ac550ab292ba1466af6b08f305bf88742',1,'smith_predictor_t']]],
+  ['state_5fsize',['state_size',['../classhigh__gain__obs__t.html#ae266079936ce573bddc546978e7768b6',1,'high_gain_obs_t']]],
+  ['steer',['steer',['../classradio__t.html#a0777a1186e23fdf63601ce9dad0ddfa5',1,'radio_t::steer()'],['../classcommunication__t.html#a0fe41a2a4daba13d36593ec718e9e8f0',1,'communication_t::steer()']]],
+  ['steering',['steering',['../structcommunication__t_1_1indata__t.html#a397927c30553734d06d58eaa3c904b32',1,'communication_t::indata_t::steering()'],['../configurations_8hpp.html#a0e96152ad5357393ee0ccc6444112737',1,'STEERING():&#160;configurations.hpp']]],
+  ['stop',['stop',['../classencoder__t.html#a9e8ba13053eeea462f3e128f962a5eb8',1,'encoder_t::stop()'],['../classesc__t.html#a198d807060f3dc13430d89081116c37d',1,'esc_t::stop()'],['../classservo__t.html#ad07a6309105cb11a07464cd1a33b9820',1,'servo_t::stop()']]]
 ];

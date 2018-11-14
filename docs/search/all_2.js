@@ -21,5 +21,6 @@ var searchData=
   ['ctrl_5fsystem_5fdelay',['CTRL_SYSTEM_DELAY',['../configurations_8hpp.html#af37682a81a2481e6cae8bc27710b7add',1,'configurations.hpp']]],
   ['curr_5fmode',['curr_mode',['../classradio__t.html#a5f9e3316898c571b533a72aed266e099',1,'radio_t']]],
   ['cyclic_5farray_5ft',['cyclic_array_t',['../classcyclic__array__t.html',1,'cyclic_array_t&lt; T, N &gt;'],['../classcyclic__array__t.html#aab02ac493f34f4394db3ec966f86dae5',1,'cyclic_array_t::cyclic_array_t()'],['../classcyclic__array__t.html#a2faa4c08d078923e44a095b00d38f901',1,'cyclic_array_t::cyclic_array_t(T value)'],['../classcyclic__array__t.html#a4ad918127d30de7864a5b3b6977e95ec',1,'cyclic_array_t::cyclic_array_t(const cyclic_array_t&lt; T, N &gt; &amp;other)']]],
-  ['cyclic_5farray_5ft_2ehpp',['cyclic_array_t.hpp',['../cyclic__array__t_8hpp.html',1,'']]]
+  ['cyclic_5farray_5ft_2ehpp',['cyclic_array_t.hpp',['../cyclic__array__t_8hpp.html',1,'']]],
+  ['cyclic_5farray_5ft_3c_20millis_2c_20delay_20_3e',['cyclic_array_t&lt; MILLIS, DELAY &gt;',['../classcyclic__array__t.html',1,'']]]
 ];
