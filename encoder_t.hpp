@@ -17,7 +17,7 @@
 #include "pwm_reader_t.hpp"
 #include "types.hpp"
 
-/** /brief Class for the Encoder sensors**
+/** /brief Class for the Encoder sensors
  *
  * The class implements the software representation of the
  * Encoder sensor of the car. It takes a

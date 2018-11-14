@@ -51,7 +51,7 @@
  *    \f]
  *    with the nonlinear output:
  *    \f[
- *      \omega_{sp} = \phi(u) = \dfrac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2} 
+ *      \omega_{sp} = \phi(u) = \frac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2} 
  *    \f]
  *    the parameters \f$ a, c_1, c_2 \f$ should be identified and inserted in the \p configure.hpp
  *    file.
@@ -89,7 +89,7 @@
  * 
  * The class implements a PI controller with an Backward Euler discretization:
  * \f[
- *   s = \dfrac{z - 1}{t_s z}
+ *   s = \frac{z - 1}{t_s z}
  * \f]
  * The constructor takes as arguments the proportional and integrative gains
  * and evaluates internally the discretization. Do not discretize the gains manually.
@@ -217,13 +217,13 @@ using time_delay_t = cyclic_array_t< float, DELAY / MILLIS >;
  * This class is taylored made for our ESC system. The integration of this 
  * system is performed with a Backward Euler
  * \f$
- *  s = \dfrac{z-1}{t_s z}
+ *  s = \frac{z-1}{t_s z}
  * \f$
  * and the recursion follows:
  * \f{align}
  *  q_{k} & = \mathrm{sat}_{[0,1]}(t_{k}) \\
  *  x_{k} & = a_{sp} x_{k-1} + b_{sp} q_{k} \\
- *  y_{k} & = \phi(x_{k}) = \dfrac{\sqrt{c_1^2 + 4 c_2 x_{k}} - c_1}{2 c_2}
+ *  y_{k} & = \phi(x_{k}) = \frac{\sqrt{c_1^2 + 4 c_2 x_{k}} - c_1}{2 c_2}
  * \f{align}
  * where:
  * \f{align}
@@ -388,7 +388,7 @@ class smith_predictor_t {
  *    \f]
  *    with the nonlinear output:
  *    \f[
- *      \omega_{sp} = \phi(u) = \dfrac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2} 
+ *      \omega_{sp} = \phi(u) = \frac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2} 
  *    \f]
  *    the parameters \f$ a, c_1, c_2 \f$ should be identified and inserted in the \p configure.hpp
  *    file.
@@ -422,7 +422,7 @@ class controller_t {
   /** \brief Implementation of the non linearity
    * 
    * \f[
-   *   \omega = \phi(u) = \dfrac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2}
+   *   \omega = \phi(u) = \frac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2}
    * \f]
    * 
    * \warning this is a static function and it is shared with the Smith predictor 

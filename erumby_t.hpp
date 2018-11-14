@@ -50,6 +50,10 @@ class erumby_t : public erumby_base_t {
  public:
   static erumby_t* create_erumby();
 
+  /** \brief Main loop for erumby
+   * 
+   * \callgraph
+   */
   void loop() {
     if (mode() == Auto) {
       loop_auto();

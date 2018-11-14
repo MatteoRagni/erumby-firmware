@@ -110,7 +110,8 @@ class high_gain_obs_t {
   /** \brief Evaluates the next step of the filter
    * 
    * Receives a new observation to evaluate a new step using the implicit step.
-   * It returns \f$ C' \hat{x} = \dot{\hat{y}} \f$.
+   * It returns:
+   * \f$ C' \hat{x} = \dot{\hat{y}} \f$.
    * 
    * \param y last observation
    * \return the derivative of the input estimated by the high gain
