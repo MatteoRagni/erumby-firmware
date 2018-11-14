@@ -197,7 +197,7 @@ Static Private Attributes</h2></td></tr>
 <td class="markdownTableBodyNone"><code>input_esc</code>  </td><td class="markdownTableBodyNone">Current PWM written on the ESC   </td></tr>
 </table>
 <dl class="section warning"><dt>Warning</dt><dd>The speed sent out is in the form: <p class="formulaDsp">
-\begin{align} \textrm{omega\_rr} &amp; = \mathrm{round}\left( 100 \omega_{right} \right) \textrm{omega\_rl} &amp; = \mathrm{round}\left( 100 \omega_{left} \right) \end{align}
+\begin{align} \textrm{omega_rr} &amp; = \mathrm{round}\left( 100 \omega_{right} \right)\\ \textrm{omega_rl} &amp; = \mathrm{round}\left( 100 \omega_{left} \right) \end{align}
 </p>
 </dd></dl>
 <p>Since we are sending integers and the bit ordering (endianess) in the Atmel microncontroller is opposite with respect to the one of the Raspberry PI, we have to swap LSB and MSB. This is done in the receiving callback for the <code>Wire</code> library.</p>
@@ -558,7 +558,7 @@ Static Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 15:36:00 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 14 2018 15:37:57 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

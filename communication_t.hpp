@@ -87,8 +87,8 @@
  *
  * \warning The speed sent out is in the form:
  * \f{align}
- *  \textrm{omega\_rr} & = \mathrm{round}\left( 100 \omega_{right} \right)
- *  \textrm{omega\_rl} & = \mathrm{round}\left( 100 \omega_{left} \right)
+ *  \textrm{omega_rr} & = \mathrm{round}\left( 100 \omega_{right} \right)\\
+ *  \textrm{omega_rl} & = \mathrm{round}\left( 100 \omega_{left} \right)
  * \f}
  *
  * Since we are sending integers and the bit ordering (endianess) in the Atmel microncontroller
