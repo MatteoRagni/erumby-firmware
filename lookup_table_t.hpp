@@ -2,7 +2,7 @@
 #define LOOKUP_TABLE_T_HPP
 
 /**
- * \file lookup_table.hpp
+ * \file lookup_table_t.hpp
  * \author Semi efficient implementation for a Lookup Table
  *
  * The file implements a lookup table, with a linear interpolation
@@ -18,13 +18,7 @@
  * searching time (there is no searching cache).
  */
 
-// Definition for algorithm testing on a computer
-#ifndef __AVR__
-#include <cstddef>
-typedef std::size_t size_t;
-#else
 #include <Arduino.h>
-#endif
 
 /** \brief 1-D linear interpolating lookup table
  * 
@@ -178,9 +172,15 @@ class lookup_table_t {
    */
   const T operator()(T z) const { return eval(z); }
 
-  /** \brief Minimum breakpoint value */
+  /** 
+   * \brief Minimum breakpoint value 
+   * \return minimum breakpoint value
+   */
   const T x_min() const { return x[0]; }
-  /** \brief Maximum breakpoint value */
+  /** 
+   * \brief Maximum breakpoint value 
+   * \return maximum breakpoint value 
+   */
   const T x_max() const { return x[B]; }
 };
 

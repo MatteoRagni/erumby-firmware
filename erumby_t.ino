@@ -26,7 +26,7 @@ void erumby_t::alarm(const char* who, const char* what) {
   servo->stop();
 
   pinMode(led_pin, OUTPUT);
-  Serial.begin(115200);
+  Serial.begin(SERIAL_SPEED);
   Serial.flush();
   while (1) {
     led ^= 1;

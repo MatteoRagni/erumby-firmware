@@ -2,7 +2,7 @@
 #define CYCLIC_ARRAY_T_HPP
 
 /**
- * \file CyclicArray.hh
+ * \file cyclic_array_t.hpp
  * \author Matteo Ragni
  *
  * Implementations of a cyclic array. It is possible to push back
@@ -10,11 +10,7 @@
  * but only a statically sized array.
  */
 
-#ifndef __AVR__
-#include <cstdlib>
-#include <stdexcept>
-using size_t = std::size_t; /**< Index type. For this we need C++11 */
-#endif
+#include <Arduino.h>
 
 /** \brief Cyclic array implementation
  *
@@ -40,13 +36,9 @@ class cyclic_array_t {
    * an \p std::out_of_bound exception for index greter than size.
    *
    * \param idx required index on the cyclic array
-   * \raise std::out_of_bound
+   * \return the internal array index
    */
   inline size_t index(size_t idx) const {
-#ifndef __AVR__
-    if (idx >= size)
-      throw std::out_of_range("Required index is out of bound");
-#endif
     return (offset + idx) % size;
   }
 
@@ -170,6 +162,7 @@ class cyclic_array_t {
    * as first parameter.
    *
    * \param value element for filling the array
+   * \return the reference to the filled array (\p this)
    */
   cyclic_array_t< T, N >& fill(T value) {
     for (size_t i = 0; i < size; i++)

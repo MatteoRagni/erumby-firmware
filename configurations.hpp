@@ -15,13 +15,10 @@
 
 // Pins Arduino - Motors
 #define ESC 11            // Traction motor Arduino -> ESC
-#define SERVO 12          // Stearing motor Arduino -> ESC
+#define SERVO 12          // Steering motor Arduino -> ESC
 #define PWM_FREQUENCY 71  // Frequency for PWM in Hz
 
-// STEARING - DUTY CYCLE VALUES
-#define DUTY_STEARING_DX 1052
-#define DUTY_STEARING_IDLE 1476
-#define DUTY_STEARING_SX 1890
+
 
 // Previous values in 16 bit
 // Nominal Value = 6881
@@ -30,11 +27,7 @@
 #define DUTY_SERVO_MIDDLE 6881
 #define DUTY_SERVO_SX 8738
 
-// MOTOR - DUTY CYCLE VALUES
-#define DUTY_MOTOR_MAX 2032
-#define DUTY_MOTOR_IDLE 1500
-#define DUTY_MOTOR_IDLE_SAFE 1340
-#define DUTY_MOTOR_MIN 1000
+
 
 // Previous values in 16 bit
 // Nominal Value = 7012
@@ -59,6 +52,16 @@
 
 #define REMOTE_NOT_WORKING
 #ifndef REMOTE_NOT_WORKING
+// STEERING - DUTY CYCLE VALUES
+#define DUTY_STEERING_DX 1052
+#define DUTY_STEERING_IDLE 1476
+#define DUTY_STEERING_SX 1890
+// MOTOR - DUTY CYCLE VALUES
+#define DUTY_MOTOR_MAX 2032
+#define DUTY_MOTOR_IDLE 1500
+#define DUTY_MOTOR_IDLE_SAFE 1340
+#define DUTY_MOTOR_MIN 1000
+// Mapping
 #define REMOTE_MOTOR_LUT_SIZE 3
 #define REMOTE_MOTOR_LUT_X \
   { DUTY_MOTOR_MIN, DUTY_MOTOR_IDLE_SAFE, DUTY_MOTOR_MAX }
@@ -66,7 +69,7 @@
   { DUTY_ESC_IDLE, DUTY_ESC_IDLE, DUTY_ESC_MAX_SAFE }
 #define REMOTE_STEER_LUT_SIZE 3
 #define REMOTE_STEER_LUT_X \
-  { DUTY_STEARING_DX, DUTY_STEARING_IDLE, DUTY_STEARING_SX }
+  { DUTY_STEERING_DX, DUTY_STEERING_IDLE, DUTY_STEERING_SX }
 #define REMOTE_STEER_LUT_Y \
   { DUTY_SERVO_DX, DUTY_SERVO_MIDDLE, DUTY_SERVO_SX }
 #endif

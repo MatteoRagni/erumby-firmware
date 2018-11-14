@@ -2,7 +2,7 @@
 #define INTERRUPT_MANAGER_HPP
 
 /**
- * \file interrupt_manager.hpp
+ * \file pwm_reader_t.hpp
  * \author Matteo Ragni
  *
  * This file contains two helper classes that allows to easily read the
@@ -56,7 +56,7 @@
 #define DUTY_MODE_DELTA 500                      /**< A delta for reading the mode (erumby remote specific) */
 #define DUTY_MODE_STABILIZER 10                  /**< Number of read for stabilization */
 typedef void (*pwm_attachable_callback_t)(void); /**< Callback type for attachable pins */
-typedef pin_t (*pwm_port_reader_t)(void);
+typedef pin_t (*pwm_port_reader_t)(void);        /**< Callback for non attachable pins */
 
 /** \brief Class for reading non attachable pins
  *
@@ -96,12 +96,12 @@ typedef pin_t (*pwm_port_reader_t)(void);
  *  - Off for 0.5s
  */
 class pwm_reader_t {
-  pin_t pin;         /**< physical pin on the board */
-  pin_t map;         /**< position of the pin in the port */
-  pulse_t edge_time; /**< timing of the last high edge */
-  pin_t read;        /**< last pin reading (high/low) */
-  pulse_t pulse;     /**< duration of the high edge (the pwm reading) */
-  counter_t counter; /**< counter (actually used for the encoder) */
+  pin_t pin;                     /**< physical pin on the board */
+  pin_t map;                     /**< position of the pin in the port */
+  pulse_t edge_time;             /**< timing of the last high edge */
+  pin_t read;                    /**< last pin reading (high/low) */
+  pulse_t pulse;                 /**< duration of the high edge (the pwm reading) */
+  counter_t counter;             /**< counter (actually used for the encoder) */
   pwm_port_reader_t port_reader; /**< reader for the specific pin */
 
  public:
@@ -124,7 +124,7 @@ class pwm_reader_t {
    * | A8  | `K (PCINT2_vect)` | `0b 0000 0001` |
    * | A9  | `K (PCINT2_vect)` | `0b 0000 0010` |
    *
-   * \param pin the pin for reading the pwm
+   * \param pin_ the pin for reading the pwm
    */
   pwm_reader_t(pin_t pin_) : pin(pin_), pulse(0), counter(0), read(0), edge_time(0) {
     map = pwm_reader_t::pin_map(pin);
@@ -142,11 +142,17 @@ class pwm_reader_t {
    */
   void interrupt_callback();
 
-  /** \brief Get current counter value */
+  /**
+   * \brief Get current counter value
+   * \return the  number of impulse passed by since last reset
+   */
   inline const counter_t get_counter() { return counter; }
   /** \brief Resets the counter to 0 */
   inline void reset_counter() { counter = 0; }
-  /** \brief Get the current pulse reading */
+  /**
+   * \brief Get the current pulse reading
+   * \return the width of the last pulse since the last interrupt call
+   */
   inline const pulse_t get_pulse() { return pulse; }
 
   /** \brief The actual interrupt service routine for port B
@@ -164,6 +170,7 @@ class pwm_reader_t {
    * this is included in the implementation file \p pwm_reader_t.cpp
    */
   static void portB_isr();
+
   /** \brief The actual interrupt service routine for port K
    *
    * \warning Never use directly this function.
@@ -179,78 +186,122 @@ class pwm_reader_t {
    * this is included in the implementation file \p pwm_reader_t.cpp
    */
   static void portK_isr();
-  
+
  private:
-  /** \biref Inits the interrupts on port B
+  /** \brief Inits the interrupts on port B
    *
    * The function sets the pin as input with pullup, then
    * enables in the register \p PCMSK0 (pin change mask register
    * for port B), and enables the port in the PCICR (pin group interrupt
    * register).
    * \warning Never use directly this function
-   * 
-   * \param pwm current \p pwm_reader_t obect pointer (\p this) 
+   *
+   * \param pwm current \p pwm_reader_t obect pointer (\p this)
    */
   static void init_port_B(pwm_reader_t* pwm);
-  /** \biref Inits the interrupts on port B
+  
+  /** \brief Inits the interrupts on port B
    *
    * The function sets the pin as input with pullup, then
    * enables in the register \p PCMSK2 (pin change mask register
    * for port K), and enables the port in the PCICR (pin group interrupt
    * register).
    * \warning Never use directly this function
-   * 
-   * \param pwm current \p pwm_reader_t obect pointer (\p this) 
+   *
+   * \param pwm current \p pwm_reader_t obect pointer (\p this)
    */
   static void init_port_K(pwm_reader_t* pwm);
 
   /** \brief Returns the map for a specific pin
-   * 
+   *
    * The function contains the map for each pin, where the map
    * is the position of the pin in the port.
-   * 
+   *
    * \param pin the pin for which the map is required
-   * \return the map for the pin 
+   * \return the map for the pin
    */
   static pin_t pin_map(pin_t pin);
 
   /** \brief Initialize the interrupt port
-   * 
-   * Calls the correct port to initialize in function 
+   *
+   * Calls the correct port to initialize in function
    * of the pin and the map.
-   * 
+   *
    * \param pwm current \p pwm_reader_t obect pointer (\p this)
    */
   static void init_interrupt(pwm_reader_t* pwm);
 
   /** \brief Returns the reading of the pin
-   * 
+   *
    * Returns the reader for the pin of the port. This function
    * returns a lambda with the procedure for reading the port.
-   * 
+   *
    * \param pin the pin to read
    * \return the lambda that reads the port
    */
-  static  pwm_port_reader_t get_port_reader(pin_t pin);
+  static pwm_port_reader_t get_port_reader(pin_t pin);
 
  public:
   /** \brief Alarm function */
   static void interrupt_error();
 };
 
+/** \brief Class for an attachable pin that reads PWM
+ * 
+ * The class uses the number of pin to attack a callback for reading
+ * the PWM value. Only pin that support \p attachInterrupt can be handled with this
+ * class. As for now this class has been written for the Arduino Mega, which 
+ * has the following pin attachable: 2, 3, 18, 19, 20, 21. Requiring a pin different
+ * from this one makes the arduino to fall in a error loop.
+ * 
+ * This class is written for **fastly varying** PWM signals and in fact internally 
+ * it has some stabilization techniques for the PWM signal (in form of delays).
+ * 
+ * \warning If the pin connected does not belong to the set (2, 3, 18, 19, 20, 21) the
+ * sketch blocks the execution showing an error, by pulsing the led of the board.
+ * The error code is a loop of `[ + + + + - + - + - ]`:
+ *  - On for 2s,
+ *  - Off for 0.5s,
+ *  - On for 0.5s,
+ *  - Off for 0.5s,
+ *  - On for 0.5s,
+ *  - Off for 0.5s
+ * 
+ * \param pin_ a valid pin from which the user wants to read the PWM
+ */
 class pwm_reader_attachable_t {
-  pin_t pin;
-  pulse_t pulse;
-  pulse_t pulse_real;
-  pulse_t edge_time;
-  counter_t counter;
-  pin_t read;
+  pin_t pin;          /**< physical pin on the board */
+  pulse_t pulse;      /**< duration of the high edge (the pwm reading) */
+  pulse_t pulse_real; /**< a stabilized version of the reading (for fast varying signals) */
+  pulse_t edge_time;  /**< timing of the last high edge */
+  counter_t counter;  /**< counter (actually used for the encoder) */
+  pin_t read;         /**< Last reading of the pin, for triggering pulse width evaluation */
 
  public:
-  static uint8_t pin_counter;
-  static pwm_reader_attachable_t* pin_table[6];
-  static const pwm_attachable_callback_t callbacks[6];
+  static uint8_t pin_counter; /**< Number of pin attached with respect to total */
+  static pwm_reader_attachable_t* pin_table[6]; /**< Table of attached pin reference for callbacks */
+  static const pwm_attachable_callback_t callbacks[6]; /**< Actual callbacks for pin */
 
+  /** \brief Constructor for an attachable pin that reads PWM
+   * 
+   * The constructor uses the number of pin to attack a callback for reading
+   * the PWM value. Only pin that support \p attachInterrupt can be handled with this
+   * class. As for now this class has been written for the Arduino Mega, which 
+   * has the following pin attachable: 2, 3, 18, 19, 20, 21. Requiring a pin different
+   * from this one makes the arduino to fall in a error loop.
+   * 
+   * \warning If the pin connected does not belong to the set (2, 3, 18, 19, 20, 21) the
+   * sketch blocks the execution showing an error, by pulsing the led of the board.
+   * The error code is a loop of `[ + + + + - + - + - ]`:
+   *  - On for 2s,
+   *  - Off for 0.5s,
+   *  - On for 0.5s,
+   *  - Off for 0.5s,
+   *  - On for 0.5s,
+   *  - Off for 0.5s
+   * 
+   * \param pin_ a valid pin from which the user wants to read the PWM
+   */
   pwm_reader_attachable_t(pin_t pin_) : pin(pin_) {
     counter = 0;
     pulse = 0;
@@ -260,10 +311,37 @@ class pwm_reader_attachable_t {
     pwm_reader_attachable_t::register_callback(this, pin);
   }
 
+  /**
+   * \brief Get current counter value
+   * \return the  number of impulse passed by since last reset
+   */
   inline counter_t get_counter() { return counter; }
+  /**
+   * \brief Get the current pulse reading
+   * \return the width of the last pulse since the last interrupt call
+   */
   inline pulse_t get_pulse() { return pulse; }
+  /**
+   * \brief Get the stabilized version of the pulse reading
+   * 
+   * Our application has a fast varying PWM signal to be read. In 
+   * order to have a better accuracy in reading the signal the class 
+   * wait a certain ammount of time before giving the current value.
+   * The waiting time is specified in terms of counts in \p DUTY_MODE_STABILIZER
+   * 
+   * \return the width of the last pulse since the last interrupt call
+   */
   inline pulse_t get_pulse_real() { return pulse_real; }
 
+  /** \brief Interrupt callback registered at pin creation
+   *
+   * This interrupt callback is registered for execution at object
+   * construction. The callback reads the status of the pin and evaluates
+   * the duration of the pwm pulse.
+   * 
+   * Since this kind of PWM are for fastly varying PWM signals, there is 
+   * also some counter handling and reset.
+   */
   void interrupt_callback() {
     uint16_t c_time = micros();
 
@@ -277,13 +355,26 @@ class pwm_reader_attachable_t {
     else
       counter = 0;
 
-    if (counter == DUTY_MODE_STABILIZER) {
+    if (counter >= DUTY_MODE_STABILIZER) {
       pulse_real = pulse;
       counter = 0;
     }
   }
 
  private:
+  /** \brief Register the callback for the current pin
+   * 
+   * This function stores the current \p pwm_reader_attachable_t instance to the
+   * static variable \p callbacks in order to actually call the interrup rooutine
+   * for the specific pin.
+   * The function only accepts the pin for which attachable interrupt
+   * is available, or it raise the \p interrupt_error.
+   * 
+   * \param self pointer to the instance of \p pwm_reader_attachable_t to be saved
+   * \param pin pin to be registered
+   * 
+   * \todo the \p pin can be removed, and \p self->pin used instead
+   */
   static void register_callback(pwm_reader_attachable_t* self, pin_t pin) {
     switch (pin) {
       case (2):
@@ -303,6 +394,7 @@ class pwm_reader_attachable_t {
     }
   }
 
+  /** \brief Alarm function */
   static void interrupt_error() {
     pinMode(ERROR_LED_PORT, OUTPUT);
     digitalWrite(ERROR_LED_PORT, LOW);
@@ -322,54 +414,5 @@ class pwm_reader_attachable_t {
     }
   }
 };
-
-/* void pwm_reader_mode_callback();
-
-class pwm_reader_mode_t {
-  pin_t pin;
-  pulse_t pulse;
-  pulse_t pulse_real;
-  pulse_t edge_time;
-  counter_t counter;
-  pin_t read;
-
- public:
-  static pwm_reader_mode_t* self;
-  pwm_reader_mode_t(pin_t pin_) : pin(pin_) {
-    if (self)
-      return;
-    self = this;
-    counter = 0;
-    pulse = 0;
-    pulse_real = 0;
-    edge_time = 0;
-    read = 0;
-
-    attachInterrupt(digitalPinToInterrupt(pin), pwm_reader_mode_callback, CHANGE);
-  }
-
-  inline counter_t get_counter() { return counter; }
-  inline pulse_t get_pulse() { return pulse; }
-  inline pulse_t get_pulse_real() { return pulse_real; }
-
-  void interrupt_callback() {
-    uint16_t c_time = micros();
-
-    if (digitalRead(pin))
-      edge_time = c_time;
-    else
-      pulse = c_time - edge_time;
-
-    if (abs(pulse_real - pulse) > DUTY_MODE_DELTA)
-      counter++;
-    else
-      counter = 0;
-
-    if (counter == 10) {
-      pulse_real = pulse;
-      counter = 0;
-    }
-  }
-}; */
 
 #endif /* INTERRUPT_MANAGER_HPP */

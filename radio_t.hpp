@@ -94,7 +94,10 @@ class radio_t {
   lookup_table_t< cmd_t, REMOTE_STEER_LUT_SIZE > steer_lookup; /**< Mapping for steer */
 #endif
   
-  /** \brief Provate constructor */
+  /** 
+   * \brief Provate constructor 
+   * \param m_ the instance of the erumby class
+   */
   radio_t(erumby_base_t* m_); 
  public:
   /** \brief Singleton constructor for radio instance

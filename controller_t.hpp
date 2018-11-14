@@ -2,7 +2,7 @@
 #define ESC_CONTROLLER_HPP
 
 /**
- * \file esc_controller.hpp
+ * \file controller_t.hpp
  * \author Matteo Ragni, Davide Piscini, Matteo Cocetti
  * 
  * The file contains the code employed in the ESC control. The ESC control
@@ -458,12 +458,23 @@ class controller_t {
    * as a static function).
    */
   class esc_sp_t : public smith_predictor_t<LOOP_TIMING, CTRL_SYSTEM_DELAY> {
+    /**
+     * \brief System non linearity
+     * \f[
+     *   \omega = \phi(u) = \frac{\sqrt{c_1^2 + 4 c_2 u}}{2 c_2}
+     * \f]
+     * \param u the imput for the non linearity
+     * \return the output for the non linearity
+     */ 
     const float phi(const float u) const override { return controller_t::phi(u); }
    public:
     /** \brief Empty constructor */
     esc_sp_t() : smith_predictor_t<LOOP_TIMING, CTRL_SYSTEM_DELAY>() {}
-    /** \brief Constructor with pole */
-    esc_sp_t(const float a) : smith_predictor_t<LOOP_TIMING, CTRL_SYSTEM_DELAY>(a) {}
+    /** 
+     * \brief Constructor with pole 
+     * \param a the pole of the model
+     */
+    esc_sp_t(const float a) : smith_predictor_t<LOOP_TIMING, CTRL_SYSTEM_DELAY>() {}
   };
 
   pi_ctrl_t< LOOP_TIMING > pi; /**< PI controller block */
@@ -484,6 +495,7 @@ class controller_t {
    * 
    * \param reference required reference
    * \param measure measure from the system (or an observer)
+   * \return the current value of the input for controlling the speed
    */
   const float operator()(const float reference, const float measure) {
     float e_omega = reference - (measure - sp.state() + sp.state_predict());

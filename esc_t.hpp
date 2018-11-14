@@ -66,6 +66,8 @@ class esc_t {
    *
    * At the end of the constructor the \p alarm is called in order to be sure
    * to write immediately on the PWM the idle values.
+   * 
+   * \param m_ pointer to the main instance of \p erumby_y
    */
   esc_t(erumby_base_t* m_) : m(m_), value(DUTY_ESC_IDLE), queued_value(DUTY_ESC_IDLE), pin(ESC) {
     const float x[] =  { 0.0, 1.0 };
@@ -82,7 +84,7 @@ class esc_t {
    * a loop. This means that the writes on ESC is queued to the next
    * iteration.
    * To be clear:
-   *  1. the user calls \set with a value of PWM, the value is in the queue
+   *  1. the user calls \p set with a value of PWM, the value is in the queue
    *  2. the machine continues with its loop, calling all devices loop
    *  3. When the esc loop is called, if the queued value is different
    *   from the current value, the queued value is written on PWM.
@@ -103,7 +105,7 @@ class esc_t {
    * the esc executes a loop. This means that the writes on ESC is queued to the next
    * iteration. The function saturates.
    * To be clear:
-   *  1. the user calls \set with a value in [0, 1], the value is in the queue
+   *  1. the user calls \p ctrl with a value in [0, 1], the value is in the queue
    *  2. the machine continues with its loop, calling all devices loop
    *  3. When the esc loop is called, if the queued value is different
    *   from the current value, the queued value is written on PWM.
@@ -115,13 +117,14 @@ class esc_t {
    * 
    * The input is mapped using a lookup table that is defined as:
    * 
-   * @code
-   *  < 0 -> DUTY_CYCLE_IDLE
-   *    0 -> DUTY_CYLE_IDLE
-   *   ... (linear mapping and rounding to nearest integer)
-   *    1 -> DUTY_CYCLE_MAX
-   *  > 1 -> DUTY_CYCLE_MAX
-   * @endcode
+   * | Input Value | Output Value                                     |
+   * |-------------|--------------------------------------------------|
+   * | < 0         | `DUTY_CYCLE_IDLE`                                |
+   * | = 0         | `DUTY_CYCLE_IDLE`                                |
+   * | in (0, 1)   | (linear mapping and rounding to nearest integer) |
+   * | = 1         | `DUTY_CYCLE_MAX`                                 |
+   * | > 1         | `DUTY_CYCLE_MAX`                                 |
+   * 
    * 
    * \param v the user value to be queued
    */
@@ -156,15 +159,29 @@ class esc_t {
     pwmWriteHR(pin, value);
   }
 
-  /** \brief Returns the value currently on the PWM pin */
+  /** 
+   * \brief Returns the value currently on the PWM pin
+   * \return the value that is currently wirtten in pwm 
+   */
   inline const cmd_t get() const { return value; }
-  /** \brief Returns minimum PWM value possible */
+  /** 
+   * \brief Returns minimum PWM value possible 
+   * \return the minim value for the ESC that it is possible to write
+   * \see DUTY_ESC_MIN 
+   */
   inline const cmd_t get_min() const { return DUTY_ESC_MIN; }
-  /** \brief Returns maximum PWM value possible */
+  /** 
+   * \brief Returns maximum PWM value possible
+   * \return the maximum value it is possible to write
+   * \see DUTY_ESC_MIN
+   */
   inline const cmd_t get_max() const { return DUTY_ESC_MAX; }
-  /** \brief Returns the idle PWM value */
+  /** 
+   * \brief Returns the idle PWM value 
+   * \return the PWM value that stops the motor
+   * \see DUTY_ESC_IDLE
+   */
   inline const cmd_t get_idle() const { return DUTY_ESC_IDLE; }
-  friend class erumby_t;
 };
 
 #endif /* ESC_T_HPP */

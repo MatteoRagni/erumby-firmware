@@ -1,9 +1,9 @@
 #include "high_gain_obs_t.hpp"
 
 template < timing_t MILLIS >
-high_gain_obs_t< MILLIS >::high_gain_obs_t(const float l1, const float l2, const float l3, const float epsilon)
+high_gain_obs_t< MILLIS >::high_gain_obs_t(const float l1_, const float l2_, const float l3_, const float epsilon_)
     : x({0}), xp({0}) {
-  gain(l1, l2, l3, epsilon);
+  discretize(l1_, l2_, l3_, epsilon_);
 };
 
 template < timing_t MILLIS >
@@ -30,7 +30,7 @@ void high_gain_obs_t< MILLIS >::reset() {
 }
 
 template < timing_t MILLIS >
-void high_gain_obs_t< MILLIS >::gain(const float l1_, const float l2_, const float l3_, const float epsilon_) {
+void high_gain_obs_t< MILLIS >::discretize(const float l1_, const float l2_, const float l3_, const float epsilon_) {
   float l1 = l1_ / epsilon_;
   float l2 = l2_ / (epsilon_ * epsilon_);
   float l3 = l3_ / (epsilon_ * epsilon_ * epsilon_);
