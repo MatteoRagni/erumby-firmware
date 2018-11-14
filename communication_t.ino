@@ -1,15 +1,16 @@
 #include "communication_t.hpp"
 
-communication_t * communication_t::self = nullptr;
+communication_t * communication_t::self = NULL;
 
 communication_t * communication_t::create_comms(erumby_base_t * m_) {
-  if (self)
-    return self;
-  self = new communication_t(m_);
+  if (communication_t::self != NULL)
+    return communication_t::self;
+  communication_t::self = new communication_t(m_);
+  return communication_t::self;
 }
 
 const communication_t * communication_t::get_comms() { 
-  return self; 
+  return communication_t::self; 
 }
 
 communication_t::communication_t(erumby_base_t * m_) : m(m_) {

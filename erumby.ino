@@ -17,17 +17,23 @@
 
 volatile erumby_t * erumby;
 pulse_t tic, toc;
+char debug;
 
 void setup() {
+  pinMode(8, OUTPUT);
+  debug = 0;
   erumby = erumby_t::create_erumby();
-  tic = millis();
+  tic = micros();
   toc = tic;
 }
 
 void loop() {
-  toc = millis();
+  toc = micros();
   
-  if ((pulse_t)(toc - tic) >= LOOP_TIMING) {
+  if ((pulse_t)(toc - tic) >= (LOOP_TIMING * 1000)) {
+    debug ^= 1;
+    digitalWrite(8, debug);
+
     erumby->loop();
     tic = toc;
   }

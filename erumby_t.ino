@@ -1,11 +1,11 @@
 #include "erumby_t.hpp"
 
-erumby_t * erumby_t::self = nullptr;
+erumby_t * erumby_t::self = NULL;
 
-erumby_t * erumby_t::create_erumby() {
-  if (self) return self;
-  self = new erumby_t();
-  return self;
+erumby_t const * erumby_t::create_erumby() {
+  if (erumby_t::self) return erumby_t::self;
+  erumby_t::self = new erumby_t();
+  return erumby_t::self;
 }
 
 erumby_t::erumby_t()  {
@@ -14,7 +14,6 @@ erumby_t::erumby_t()  {
   servo = new servo_t(this);
   enc_r = new encoder_t(R_WHEEL_ENCODER);
   enc_l = new encoder_t(L_WHEEL_ENCODER);
-  
   radio = radio_t::create_radio(this);
   comm = communication_t::create_comms(this);
 }

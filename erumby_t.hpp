@@ -29,7 +29,8 @@
  * ENCODER for the sensing, RADIO for modality selection.
  */
 class erumby_t : public erumby_base_t {
-  static erumby_t* self;
+  static erumby_t * self;
+  public:
 
   esc_t* esc;              /**< esc pointer to the class */
   servo_t* servo;          /**< servo pointer to the class  */
@@ -48,7 +49,7 @@ class erumby_t : public erumby_base_t {
   erumby_t();
 
  public:
-  static erumby_t* create_erumby();
+  static const erumby_t * create_erumby();
 
   erumby_mode_t mode() override { return radio->get_mode(); }
 

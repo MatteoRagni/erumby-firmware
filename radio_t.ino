@@ -1,12 +1,12 @@
 #include "radio_t.hpp"
 
-radio_t* radio_t::self = nullptr;
+radio_t* radio_t::self = NULL;
 
 radio_t * radio_t::create_radio(erumby_base_t * m_) {
-  if (self)
-    return self;
-  self = new radio_t(m_);
-  return self;
+  if (radio_t::self)
+    return radio_t::self;
+  radio_t::self = new radio_t(m_);
+  return radio_t::self;
 }
 
 radio_t::radio_t(erumby_base_t* m_)
