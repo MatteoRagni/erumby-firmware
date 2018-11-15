@@ -1,4 +1,4 @@
-#include "high_gain_obs_t.hpp"
+#include "high_gain_obs2_t.hpp"
 
 template < timing_t MILLIS >
 high_gain_obs2_t< MILLIS >::high_gain_obs2_t(const float l1_, const float l2_, const float epsilon_)
