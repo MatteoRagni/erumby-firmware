@@ -106,8 +106,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ae460c9f9a807275ec47206db6b949fef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae974a0f7cc4cc0578f10851059c9f20a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpwm__reader__t.html">pwm_reader_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classencoder__t.html#ae974a0f7cc4cc0578f10851059c9f20a">pwm</a></td></tr>
 <tr class="separator:ae974a0f7cc4cc0578f10851059c9f20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d010f5cd4fc21448db4496197598577"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhigh__gain__obs__t.html">high_gain_obs_t</a>&lt; <a class="el" href="configurations_8hpp.html#ae73518372704d184f3082009d5e40f09">LOOP_TIMING</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classencoder__t.html#a9d010f5cd4fc21448db4496197598577">hg</a></td></tr>
-<tr class="separator:a9d010f5cd4fc21448db4496197598577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a51bc0830628b16014da3ca79457b7"><td class="memItemLeft" align="right" valign="top"><a id="a44a51bc0830628b16014da3ca79457b7"></a>
+<a class="el" href="classhigh__gain__obs2__t.html">high_gain_obs2_t</a>&lt; <a class="el" href="configurations_8hpp.html#ae73518372704d184f3082009d5e40f09">LOOP_TIMING</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>hg</b></td></tr>
+<tr class="separator:a44a51bc0830628b16014da3ca79457b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a76ca800ab0b9c5d2473292fe24f90d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classencoder__t.html#a1a76ca800ab0b9c5d2473292fe24f90d">theta</a></td></tr>
 <tr class="separator:a1a76ca800ab0b9c5d2473292fe24f90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad212960e831bef9d40139a47dc94fd24"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classencoder__t.html#ad212960e831bef9d40139a47dc94fd24">omega</a></td></tr>
@@ -117,7 +118,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>/brief Class for the Encoder sensors</p>
 <p>The class implements the software representation of the Encoder sensor of the car. It takes a PWM as input and calculate the angular velocity of the wheel. </p>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00027">27</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00031">31</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a533f40e8b5511b85e6efa2dfdda390c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a533f40e8b5511b85e6efa2dfdda390c3">&#9670;&nbsp;</a></span>encoder_t()</h2>
@@ -153,7 +154,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00049">49</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00057">57</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -184,7 +185,7 @@ Private Attributes</h2></td></tr>
 <p>Main loop to run for reading the encoders. </p>
 <p>The main loop runs the loop of the high gain observer, after reading the angle offset of the encoder (in terms of counts) </p>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00061">61</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00073">73</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -214,7 +215,7 @@ Private Attributes</h2></td></tr>
 <p>Returns the wheel speed (estimation of the high gain observer) </p>
 <dl class="section return"><dt>Returns</dt><dd>the wheel speed </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00072">72</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00084">84</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -244,7 +245,7 @@ Private Attributes</h2></td></tr>
 <p>Returns the current angle of the wheel (raw value) </p>
 <dl class="section return"><dt>Returns</dt><dd>the current raw value of wheel angle </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00077">77</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00089">89</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -270,7 +271,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>incremental counter of the encoder ppr </p>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00028">28</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00032">32</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -295,32 +296,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>pwm object for reading the value of signal wave </p>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00029">29</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a9d010f5cd4fc21448db4496197598577"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d010f5cd4fc21448db4496197598577">&#9670;&nbsp;</a></span>hg</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classhigh__gain__obs__t.html">high_gain_obs_t</a>&lt; <a class="el" href="configurations_8hpp.html#ae73518372704d184f3082009d5e40f09">LOOP_TIMING</a> &gt; encoder_t::hg</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>High gain filter for encoder reading </p>
-
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00030">30</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00033">33</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -345,7 +321,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Internal position for the wheel (direct read from the sensor) </p>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00031">31</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00039">39</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -370,7 +346,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>High gain estimation of the wheel speed </p>
 
-<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00032">32</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="encoder__t_8hpp_source.html#l00040">40</a> of file <a class="el" href="encoder__t_8hpp_source.html">encoder_t.hpp</a>.</p>
 
 </div>
 </div>
@@ -380,7 +356,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 14 2018 15:37:57 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 15 2018 10:34:35 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -428,8 +428,10 @@
  * \def HG_L3
  *
  * Define observer parameter for state 3 in the \p high_gain_obs_t
+ * If this parameter is not defined, the code will compile the stack
+ * with an high gain observer of order 2.
  */
-#define HG_L3 -1.0
+//#define HG_L3 -1.0
 
 /**
  * \def HG_EPSILON

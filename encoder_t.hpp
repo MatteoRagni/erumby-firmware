@@ -13,7 +13,11 @@
  */
 
 #include "configurations.hpp"
+#ifdef HG_L3
 #include "high_gain_obs_t.hpp"
+#else
+#include "high_gain_obs2_t.hpp"
+#endif
 #include "pwm_reader_t.hpp"
 #include "types.hpp"
 
@@ -27,7 +31,11 @@
 class encoder_t {
   counter_t counter;                 /**< incremental counter of the encoder ppr */
   pwm_reader_t pwm;                  /**< pwm object for reading the value of signal wave */
+#ifdef HG_L3
   high_gain_obs_t< LOOP_TIMING > hg; /**< High gain filter for encoder reading */
+#else
+  high_gain_obs2_t< LOOP_TIMING > hg;
+#endif
   float theta;                       /**< Internal position for the wheel (direct read from the sensor) */
   float omega;                       /**< High gain estimation of the wheel speed */
 
@@ -49,7 +57,11 @@ class encoder_t {
   encoder_t(pin_t pin_)
       : pwm(pwm_reader_t(pin_)),
         counter(0),
+#ifdef HG_L3
         hg(high_gain_obs_t< LOOP_TIMING >(HG_L1, HG_L2, HG_L3, HG_EPSILON)),
+#else
+        hg(high_gain_obs2_t< LOOP_TIMING >(HG_L1, HG_L2, HG_EPSILON)),
+#endif
         theta(0),
         omega(0) {}
   

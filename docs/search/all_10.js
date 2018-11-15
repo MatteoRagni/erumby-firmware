@@ -15,7 +15,7 @@ var searchData=
   ['speed_5fctrl',['speed_ctrl',['../classerumby__t.html#ae3789c7b71d44bd8236771f02681f580',1,'erumby_t']]],
   ['state',['state',['../classsmith__predictor__t.html#adbca681e44e1afeb0030bec7bb376166',1,'smith_predictor_t']]],
   ['state_5fpredict',['state_predict',['../classsmith__predictor__t.html#ac550ab292ba1466af6b08f305bf88742',1,'smith_predictor_t']]],
-  ['state_5fsize',['state_size',['../classhigh__gain__obs__t.html#ae266079936ce573bddc546978e7768b6',1,'high_gain_obs_t']]],
+  ['state_5fsize',['state_size',['../classhigh__gain__obs2__t.html#a6d20297cba71b2363d84c76b5c7a902f',1,'high_gain_obs2_t::state_size()'],['../classhigh__gain__obs__t.html#ae266079936ce573bddc546978e7768b6',1,'high_gain_obs_t::state_size()']]],
   ['steer',['steer',['../classradio__t.html#a0777a1186e23fdf63601ce9dad0ddfa5',1,'radio_t::steer()'],['../classcommunication__t.html#a0fe41a2a4daba13d36593ec718e9e8f0',1,'communication_t::steer()']]],
   ['steering',['steering',['../structcommunication__t_1_1indata__t.html#a397927c30553734d06d58eaa3c904b32',1,'communication_t::indata_t::steering()'],['../configurations_8hpp.html#a0e96152ad5357393ee0ccc6444112737',1,'STEERING():&#160;configurations.hpp']]],
   ['stop',['stop',['../classencoder__t.html#a9e8ba13053eeea462f3e128f962a5eb8',1,'encoder_t::stop()'],['../classesc__t.html#a198d807060f3dc13430d89081116c37d',1,'esc_t::stop()'],['../classservo__t.html#ad07a6309105cb11a07464cd1a33b9820',1,'servo_t::stop()']]]

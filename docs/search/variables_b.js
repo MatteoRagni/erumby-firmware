@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['q',['q',['../classlookup__table__t.html#a0ec9c4bcb0994f602ae7e2908770fc59',1,'lookup_table_t']]],
-  ['queued_5fvalue',['queued_value',['../classesc__t.html#adfaa3753fb8ce7ee23e543ff5ad79fe0',1,'esc_t::queued_value()'],['../classservo__t.html#a6f1ec93db0d4240f8eeaf603d51d9d68',1,'servo_t::queued_value()']]]
+  ['radio',['radio',['../classerumby__t.html#adba99e7fb9571eb955466ac2414a8326',1,'erumby_t']]],
+  ['read',['read',['../classpwm__reader__t.html#a9e68f13ad6c0cd10656ea4531a0e60b0',1,'pwm_reader_t::read()'],['../classpwm__reader__attachable__t.html#a4a2929c378b78a66ed20045de93f438c',1,'pwm_reader_attachable_t::read()']]]
 ];
