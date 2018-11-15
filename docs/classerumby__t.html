@@ -200,7 +200,7 @@ Static Private Attributes</h2></td></tr>
 <p>Constructor for the erumby object. </p>
 <p>The erumby object call the costructors of the different object: esc, servo, radio, enc_r, enc_l and initialize the timers in order to allow the comunications </p>
 
-<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00011">11</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00018">18</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
 
 </div>
 </div>
@@ -282,7 +282,7 @@ Static Private Attributes</h2></td></tr>
 <p>Main loop for erumby. </p>
 <p>In the main loop the mode is read (</p><dl class="section see"><dt>See also</dt><dd>MODE ) and in relations with this a different execution <a class="el" href="classerumby__t.html#abda44e7edfec94acd980ede0e4c6ee69" title="Return the current mode (Manual, Auto, Secure) ">mode</a> is selected. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00040">40</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00047">47</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
 
 </div>
 </div>
@@ -311,7 +311,7 @@ Static Private Attributes</h2></td></tr>
 <li>servo: set the stop mode for the servo (<code><a class="el" href="classservo__t.html#ad07a6309105cb11a07464cd1a33b9820">servo_t::stop</a></code>) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00052">52</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00059">59</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
 
 </div>
 </div>
@@ -332,15 +332,15 @@ Static Private Attributes</h2></td></tr>
 
 <p>Auto loop for erumby: in this state the motor are command with set point and the sensors are read. </p>
 <p>In this modality the following command are executed:</p><ul>
-<li>enc_l: update the value of theta position and angular velocity of the left encoder with an hig gain filter (<code><a class="el" href="classencoder__t.html#a069bef4cc33c689cfbafea466dafbc7c" title="Main loop to run for reading the encoders. ">encoder_t::loop</a></code>).</li>
-<li>enc_r: update the value of theta position and angular velocity of the right encoder with an hig gain filter (<code><a class="el" href="classencoder__t.html#a069bef4cc33c689cfbafea466dafbc7c" title="Main loop to run for reading the encoders. ">encoder_t::loop</a></code>).</li>
+<li>enc_l: update the value of theta position and angular velocity of the left encoder with an hig gain filter (<code><a class="el" href="classencoder__t.html#a9ad00a9e80ead1a4a5afa6638de7915f" title="Main loop to run for reading the encoders. ">encoder_t::loop</a></code>).</li>
+<li>enc_r: update the value of theta position and angular velocity of the right encoder with an hig gain filter (<code><a class="el" href="classencoder__t.html#a9ad00a9e80ead1a4a5afa6638de7915f" title="Main loop to run for reading the encoders. ">encoder_t::loop</a></code>).</li>
 <li>comm: write in the i2c the value of the angular velocity of the wheel and the esc current value. The steering and traction value are read from the i2c and this are the current set value for the motors (<code><a class="el" href="classcommunication__t.html#a7793aee80500d569fd572135e1290a63" title="Loop to run in erumby_t::loop_auto. ">communication_t::loop_auto</a></code>)</li>
 <li>radio: read the pwm value of the radio (<code><a class="el" href="classradio__t.html" title="Radio remote software interface. ">radio_t</a></code>)</li>
 <li>esc: it sets as current value the one read by the communication for the esc (<code><a class="el" href="classesc__t.html#ab03daa05e9be0391d9737797d37e6e4d" title="ESC main loop of execution. ">esc_t::loop</a></code>)</li>
 <li>servo: it sets as current value the one read by the communication for the servo (<code><a class="el" href="classservo__t.html#ae5b800ac8bac96a3872d80d04eb132a4" title="SERVO main loop of execution. ">servo_t::loop</a></code>) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00061">61</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00068">68</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
 
 </div>
 </div>
@@ -361,13 +361,13 @@ Static Private Attributes</h2></td></tr>
 
 <p>stop loop for erumby: in this state the motor are set in the idle state and the sensors are reset. </p>
 <p>In this modality the following command are executed:</p><ul>
-<li>enc_l: the value of the state in the high gain filter are reset(<code><a class="el" href="classencoder__t.html#a9e8ba13053eeea462f3e128f962a5eb8" title="Resets the state of the encoder (use for mode change) ">encoder_t::stop</a></code>).</li>
-<li>enc_r: the value of the state in the high gain filter are reset(<code><a class="el" href="classencoder__t.html#a9e8ba13053eeea462f3e128f962a5eb8" title="Resets the state of the encoder (use for mode change) ">encoder_t::stop</a></code>).</li>
+<li>enc_l: the value of the state in the high gain filter are reset(<code><a class="el" href="classencoder__t.html#a981a22829b3cd18fa614e76e978afaf0" title="Resets the state of the encoder (use for mode change) ">encoder_t::stop</a></code>).</li>
+<li>enc_r: the value of the state in the high gain filter are reset(<code><a class="el" href="classencoder__t.html#a981a22829b3cd18fa614e76e978afaf0" title="Resets the state of the encoder (use for mode change) ">encoder_t::stop</a></code>).</li>
 <li>esc: set the stop mode for the esc (<code><a class="el" href="classesc__t.html#a198d807060f3dc13430d89081116c37d">esc_t::stop</a></code>)</li>
 <li>servo: set the stop mode for the servo (<code><a class="el" href="classservo__t.html#ad07a6309105cb11a07464cd1a33b9820">servo_t::stop</a></code>) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00070">70</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00077">77</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
 
 </div>
 </div>
@@ -414,7 +414,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00077">77</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="erumby__t_8ino_source.html#l00084">84</a> of file <a class="el" href="erumby__t_8ino_source.html">erumby_t.ino</a>.</p>
 
 </div>
 </div>
@@ -865,7 +865,7 @@ Static Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 15 2018 17:06:47 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 15 2018 17:21:27 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

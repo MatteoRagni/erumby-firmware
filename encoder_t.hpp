@@ -32,9 +32,9 @@ class encoder_t {
   counter_t counter;                 /**< incremental counter of the encoder ppr */
   pwm_reader_t pwm;                  /**< pwm object for reading the value of signal wave */
 #ifdef HG_L3
-  high_gain_obs_t< LOOP_TIMING > hg; /**< High gain filter for encoder reading */
+  high_gain_obs_t< LOOP_TIMING > hg; /**< High gain filter for encoder reading (order 2 since HG_L3 is undefined) */
 #else
-  high_gain_obs2_t< LOOP_TIMING > hg;
+  high_gain_obs2_t< LOOP_TIMING > hg; /**< High gain filter for encoder reading (order 3 since HG_L3 is defined) */
 #endif
   float theta;                       /**< Internal position for the wheel (direct read from the sensor) */
   float omega;                       /**< High gain estimation of the wheel speed */
@@ -52,7 +52,7 @@ class encoder_t {
    * At the end of the constructor the \p alarm is called in order to be sure
    * to write immediately on the PWM the idle values.
    *
-   * \param m_ pointers to the unique instance of the erumby machine
+   * \param pin_ value of the pin used for the encoder
    */
   encoder_t(pin_t pin_)
       : pwm(pwm_reader_t(pin_)),
@@ -70,7 +70,7 @@ class encoder_t {
    * The main loop runs the loop of the high gain observer, after reading 
    * the angle offset of the encoder (in terms of counts)
    */
-  const void loop() {
+  void loop() {
     theta += (M_PI * float(pwm.get_counter()) / float(ENCODER_QUANTIZATION));
     pwm.reset_counter();
     counter = pwm.get_counter();
@@ -89,7 +89,7 @@ class encoder_t {
   const float get_theta() const { return theta; }
 
   /** \brief Resets the state of the encoder (use for mode change) */
-  inline const void stop() {
+  inline void stop() {
     theta = 0.0;
     omega = 0.0;
     hg.reset();

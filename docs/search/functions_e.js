@@ -8,5 +8,5 @@ var searchData=
   ['state',['state',['../classsmith__predictor__t.html#adbca681e44e1afeb0030bec7bb376166',1,'smith_predictor_t']]],
   ['state_5fpredict',['state_predict',['../classsmith__predictor__t.html#ac550ab292ba1466af6b08f305bf88742',1,'smith_predictor_t']]],
   ['steer',['steer',['../classcommunication__t.html#a0fe41a2a4daba13d36593ec718e9e8f0',1,'communication_t::steer()'],['../classerumby__t.html#aeff2727e6f3222e7c9469ae4eae622ea',1,'erumby_t::steer() const override'],['../classerumby__t.html#ae747afbaaa04cf8ed1904ba8aa774327',1,'erumby_t::steer(cmd_t v) override']]],
-  ['stop',['stop',['../classencoder__t.html#a9e8ba13053eeea462f3e128f962a5eb8',1,'encoder_t::stop()'],['../classerumby__t.html#a6924458e15032c4c161dbfd224fb4d65',1,'erumby_t::stop()'],['../classesc__t.html#a198d807060f3dc13430d89081116c37d',1,'esc_t::stop()'],['../classservo__t.html#ad07a6309105cb11a07464cd1a33b9820',1,'servo_t::stop()']]]
+  ['stop',['stop',['../classencoder__t.html#a981a22829b3cd18fa614e76e978afaf0',1,'encoder_t::stop()'],['../classerumby__t.html#a6924458e15032c4c161dbfd224fb4d65',1,'erumby_t::stop()'],['../classesc__t.html#a198d807060f3dc13430d89081116c37d',1,'esc_t::stop()'],['../classservo__t.html#ad07a6309105cb11a07464cd1a33b9820',1,'servo_t::stop()']]]
 ];
