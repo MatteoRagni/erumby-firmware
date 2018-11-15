@@ -1,7 +1,9 @@
 var searchData=
 [
   ['offset',['offset',['../classcyclic__array__t.html#ab67fab8afabfa604d18314b8c3135c99',1,'cyclic_array_t']]],
-  ['omega',['omega',['../classencoder__t.html#ad212960e831bef9d40139a47dc94fd24',1,'encoder_t']]],
+  ['omega',['omega',['../classencoder__t.html#ad212960e831bef9d40139a47dc94fd24',1,'encoder_t::omega()'],['../classerumby__t.html#a3db671c478066246abcd84576821ce8a',1,'erumby_t::omega()']]],
+  ['omega_5fl',['omega_l',['../classerumby__t.html#a2b42c00b60d451ea14a604463f9bdb30',1,'erumby_t']]],
+  ['omega_5fr',['omega_r',['../classerumby__t.html#a96038bd2ef5be2de819d7c1f767ba890',1,'erumby_t']]],
   ['omega_5frl',['omega_rl',['../structcommunication__t_1_1outdata__t.html#a402e45003cf1a588d428cfd460bad8a5',1,'communication_t::outdata_t']]],
   ['omega_5frr',['omega_rr',['../structcommunication__t_1_1outdata__t.html#a1b0cc3bc675cb12b9b083609590cdc31',1,'communication_t::outdata_t']]],
   ['omega_5ft',['omega_t',['../types_8hpp.html#a8d64ec5a40ae7708ca5f383582553c6d',1,'types.hpp']]],

@@ -204,7 +204,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check the user input. If in remote may raise the alarm. </p>
-<p>The function limits the input between the boundaries of the duty cycle of the servo (<code>DUTY_SERVO_DX</code>, <code>DUTY_SERVO_SX</code>). If the machine is in remote mode, then the <code>erumby_t::alarm</code> will be called for an input out of bounds.</p>
+<p>The function limits the input between the boundaries of the duty cycle of the servo (<code>DUTY_SERVO_DX</code>, <code>DUTY_SERVO_SX</code>). If the machine is in remote mode, then the <code><a class="el" href="classerumby__t.html#a7783e7c5a559e386b2ae7eebc8ed86f5" title="alarm function for error debuging set the led of port 13 blinking, With serial monitor is possible to...">erumby_t::alarm</a></code> will be called for an input out of bounds.</p>
 <p>In the initial case, the full right control is considered to be the smaller PWM value possible, while the full left is considered the full right. In case of the opposite situation, the code fix the boundaries automatically, at compile time.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -615,7 +615,7 @@ erumby_mode </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 15 2018 15:08:15 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 15 2018 17:06:47 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

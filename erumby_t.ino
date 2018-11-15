@@ -5,17 +5,43 @@ erumby_t * erumby_t::self = NULL;
 erumby_t const * erumby_t::create_erumby() {
   if (erumby_t::self) return erumby_t::self;
   erumby_t::self = new erumby_t();
+  if (!erumby) {
+    while(1) {
+      // This is critical... if we cannot create a pointer in setup, how
+      // can we print the error in console?
+      
+    }
+  }
   return erumby_t::self;
 }
 
 erumby_t::erumby_t()  {
   InitTimersSafe();
+
   esc = new esc_t(this);
+  if (!esc)
+    this->alarm("Boot", "Cannot start ESC module");
+
   servo = new servo_t(this);
+  if (!servo)
+    this->alarm("Boot", "Cannot start SERVO module");
+
   enc_r = new encoder_t(R_WHEEL_ENCODER);
+  if (!enc_r)
+    this->alarm("Boot", "Cannot start ENCODER module (right, 1/2)");
+
   enc_l = new encoder_t(L_WHEEL_ENCODER);
+  if (!enc_l)
+    this->alarm("Boot", "Cannot start ENCODER module (left, 2/2)");
+  
   radio = radio_t::create_radio(this);
+  if (!radio)
+    this->alarm("Boot", "Cannot start RADIO module");
+  
   comm = communication_t::create_comms(this);
+  if (!comm)
+    this->alarm("Boot", "Cannot start COMMS module");
+    
 }
 
 void erumby_t::loop() {

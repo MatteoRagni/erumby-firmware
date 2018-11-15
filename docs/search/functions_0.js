@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['back',['back',['../classcyclic__array__t.html#a64f3194d90506ba2a4f293a7302e13ae',1,'cyclic_array_t::back() const'],['../classcyclic__array__t.html#a3a2278dc16b1994972dce8b4e20e6c54',1,'cyclic_array_t::back()']]]
+  ['alarm',['alarm',['../classerumby__t.html#a7783e7c5a559e386b2ae7eebc8ed86f5',1,'erumby_t::alarm(const char *who, const char *what) override'],['../classerumby__t.html#a448c36e270fbd3929c19f8b5ba071185',1,'erumby_t::alarm(const char *who) override']]]
 ];

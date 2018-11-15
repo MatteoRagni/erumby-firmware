@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['lookup_5ftable_5ft',['lookup_table_t',['../classlookup__table__t.html#ab90d7d99bac3b92cff5e2146ec5888a3',1,'lookup_table_t::lookup_table_t()'],['../classlookup__table__t.html#a6f0ffefd27b2e7f38545ae0bd8954a13',1,'lookup_table_t::lookup_table_t(const T x_[B], const T y_[B])'],['../classlookup__table__t.html#a5d55648a51b135a9054439ea44b538e3',1,'lookup_table_t::lookup_table_t(const T x_[B], const T y_[B], T sat_)'],['../classlookup__table__t.html#a0b0821718927dc003fa8994f2f6b6f9f',1,'lookup_table_t::lookup_table_t(const T x_[B], const T y_[B], T low_sat_, T high_sat_)'],['../classlookup__table__t.html#ac18518f75ecaa0dd81e2be7d119522bb',1,'lookup_table_t::lookup_table_t(const lookup_table_t &amp;other)']]],
-  ['loop',['loop',['../classencoder__t.html#a069bef4cc33c689cfbafea466dafbc7c',1,'encoder_t::loop()'],['../classerumby__t.html#a2567c659113289cb9d1c0dec0e8d6205',1,'erumby_t::loop()'],['../classesc__t.html#ab03daa05e9be0391d9737797d37e6e4d',1,'esc_t::loop()'],['../classradio__t.html#a606e7e0b44c5e7c01be742a13e332242',1,'radio_t::loop()'],['../classservo__t.html#ae5b800ac8bac96a3872d80d04eb132a4',1,'servo_t::loop()']]],
-  ['loop_5fauto',['loop_auto',['../classcommunication__t.html#a7793aee80500d569fd572135e1290a63',1,'communication_t']]],
-  ['loop_5fsecure',['loop_secure',['../classcommunication__t.html#a24dfddbdc8170f35babb88567d938338',1,'communication_t']]]
+  ['index',['index',['../classcyclic__array__t.html#adea07da1de7525ccdddda82c3e553ba9',1,'cyclic_array_t']]],
+  ['init',['init',['../classlookup__table__t.html#ab3b62f875d30e06e29d668e31739b78a',1,'lookup_table_t']]],
+  ['init_5finterrupt',['init_interrupt',['../classpwm__reader__t.html#a37235f0317efc382027284df5769c2ca',1,'pwm_reader_t']]],
+  ['init_5fport_5fb',['init_port_B',['../classpwm__reader__t.html#a1b61b389aadb35000a2c5afb92d9707f',1,'pwm_reader_t']]],
+  ['init_5fport_5fk',['init_port_K',['../classpwm__reader__t.html#aec9f5a4da402d6f8c14d67bfeaf77dbb',1,'pwm_reader_t']]],
+  ['input_5fcheck',['input_check',['../classesc__t.html#aad7fa2b883c135adf2f57ef00a361f84',1,'esc_t::input_check()'],['../classservo__t.html#a9045b785b3ba90b91d7c77121ca2e8f1',1,'servo_t::input_check()']]],
+  ['interrupt_5fcallback',['interrupt_callback',['../classpwm__reader__t.html#a10f494e8513af16405ed92ba6604d351',1,'pwm_reader_t::interrupt_callback()'],['../classpwm__reader__attachable__t.html#ac61b1ae305c96d79a5c0e7d4ed6e032a',1,'pwm_reader_attachable_t::interrupt_callback()']]],
+  ['interrupt_5ferror',['interrupt_error',['../classpwm__reader__t.html#ad1b2f21da67841502faba81410c7fc77',1,'pwm_reader_t::interrupt_error()'],['../classpwm__reader__attachable__t.html#a349d0ed2c8a37de7e99ead284777b2e0',1,'pwm_reader_attachable_t::interrupt_error()']]],
+  ['is_5fvalid',['is_valid',['../classlookup__table__t.html#ab008723c6dc53ff4319208a76d2f1b94',1,'lookup_table_t']]]
 ];

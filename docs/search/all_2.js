@@ -11,6 +11,7 @@ var searchData=
   ['counter',['counter',['../classencoder__t.html#ae460c9f9a807275ec47206db6b949fef',1,'encoder_t::counter()'],['../classpwm__reader__t.html#ae922618d0f5cbc675477442d340d0ee4',1,'pwm_reader_t::counter()'],['../classpwm__reader__attachable__t.html#afabbfad1c812a4fa0d3a9eb4c78a1ce7',1,'pwm_reader_attachable_t::counter()']]],
   ['counter_5ft',['counter_t',['../types_8hpp.html#aba03c86a55b789b2ca5253cab49cf585',1,'types.hpp']]],
   ['create_5fcomms',['create_comms',['../classcommunication__t.html#a191882860c82e0b0242895ebe5084410',1,'communication_t']]],
+  ['create_5ferumby',['create_erumby',['../classerumby__t.html#a34c593cf539429d7551fd20345f2f4f3',1,'erumby_t']]],
   ['create_5fradio',['create_radio',['../classradio__t.html#a57f0249de27ea10df4110dd6529e21d6',1,'radio_t']]],
   ['ctrl',['ctrl',['../classesc__t.html#a8b29b63f91c4a77635caf8c74853bebd',1,'esc_t']]],
   ['ctrl_5fki',['CTRL_KI',['../configurations_8hpp.html#a06cf8ad53778088c5824c1338b48aeca',1,'configurations.hpp']]],

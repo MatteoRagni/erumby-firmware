@@ -75,8 +75,8 @@ typedef int16_t omega_t;   /**< types for angular speed in integer */
  * \see erumby_t
  */
 class erumby_base_t {
- public:
   ///! @cond
+ public:
   erumby_base_t(){};
   virtual erumby_mode_t mode() = 0;
   virtual float omega_r() = 0;

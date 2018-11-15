@@ -48,7 +48,7 @@ class esc_t {
   inline cmd_t input_check(cmd_t v) {
     if ((v > get_max()) || (v < get_min())) {
       if (m->mode() == Auto) {
-        m->alarm("ESC");
+        m->alarm("ESC", "Required an input command out of bound, in Auto mode");
       }
       return get_idle();
     }

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['self',['self',['../classcommunication__t.html#a3a5a6875dfd3f22070fd3e5ce57e507b',1,'communication_t::self()'],['../classradio__t.html#ad2a5c0d3ce4f5e25ae48e6204230d8db',1,'radio_t::self()']]],
+  ['self',['self',['../classcommunication__t.html#a3a5a6875dfd3f22070fd3e5ce57e507b',1,'communication_t::self()'],['../classerumby__t.html#a06569d2528e61534fd1d499fbb5fa961',1,'erumby_t::self()'],['../classradio__t.html#ad2a5c0d3ce4f5e25ae48e6204230d8db',1,'radio_t::self()']]],
   ['servo',['servo',['../classerumby__t.html#a300192a06f42b1f6dc24a19313e8e5ee',1,'erumby_t']]],
   ['size',['size',['../classcyclic__array__t.html#abd2c28a25db696e4924d1e4cca90f25a',1,'cyclic_array_t']]],
   ['sp',['sp',['../classcontroller__t.html#a3138e361a03474ae04084a8a199f93db',1,'controller_t']]],

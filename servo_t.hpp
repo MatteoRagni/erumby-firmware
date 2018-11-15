@@ -58,7 +58,7 @@ class servo_t {
   inline cmd_t input_check(cmd_t v) {
     if ((v > get_max()) || (v < get_min())) {
       if (m->mode() == Auto) {
-        m->alarm("SERVO");
+        m->alarm("SERVO", "Required an input command out of bound, in Auto mode");
       }
       return get_center();
     }
