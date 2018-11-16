@@ -130,6 +130,21 @@ Classes</h2></td></tr>
 </p>
 <p>where:</p>
 <p class="formulaDsp">
+\begin{align} A &amp; = \begin{bmatrix} 0 &amp; 1 \\ 0 &amp; 0 \end{bmatrix} \\ C &amp; = \begin{bmatrix} 1 &amp; 0 \end{bmatrix} \\ C&#39; &amp; = \begin{bmatrix} 0 &amp; 1 \end{bmatrix} \\ L &amp; = \begin{bmatrix} l_1 \\ l_2 \end{bmatrix} \\ E(\varepsilon) &amp; = \begin{bmatrix} \varepsilon^{-1} &amp; 0 \\ 0 &amp; \varepsilon^{-2}\\ \end{bmatrix} \end{align}
+</p>
+<p>where the parameters can be configured using Matlab for example:</p>
+<p class="formulaDsp">
+\[ L = - \mathrm{lqr}(A^\top, C^\top, I_{2 \times 2}, 1)^\top \]
+</p>
+<p>and than using \(\varepsilon\) for changing the bandwidth of the filter.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Remember that the bandwidth may be limited by the integration timestep.</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Matteo Ragni, Matteo Cocetti, Davide Piscini</dd></dl>
+<p>The class implements an high gain observer for encoders that estimates the current angle of the wheel closing the loop on the measured angle on the encoder, using the following structure:</p>
+<p class="formulaDsp">
+\begin{align} \dot{\hat{x}} &amp; = A \hat{x} + E(\varepsilon) L (C \hat{x} - y) \\ \hat{y} &amp; = C x \\ \dot{\hat{y}} &amp; = C&#39; x \end{align}
+</p>
+<p>where:</p>
+<p class="formulaDsp">
 \begin{align} A &amp; = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix} \\ C &amp; = \begin{bmatrix} 1 &amp; 0 &amp; 0 \end{bmatrix} \\ C&#39; &amp; = \begin{bmatrix} 0 &amp; 1 &amp; 0 \end{bmatrix} \\ L &amp; = \begin{bmatrix} l_1 \\ l_2 \\ l_3 \end{bmatrix} \\ E(\varepsilon) &amp; = \begin{bmatrix} \varepsilon^{-1} &amp; 0 &amp; 0 \\ 0 &amp; \varepsilon^{-2} &amp; 0 \\ 0 &amp; 0 &amp; \varepsilon^{-3} \end{bmatrix} \end{align}
 </p>
 <p>where the parameters can be configured using Matlab for example:</p>
@@ -146,7 +161,7 @@ Classes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="high__gain__obs__t_8hpp.html">high_gain_obs_t.hpp</a></li>
-    <li class="footer">Generated on Fri Nov 16 2018 13:50:06 for eRumby-Firmware by
+    <li class="footer">Generated on Fri Nov 16 2018 14:09:40 for eRumby-Firmware by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>
