@@ -43,7 +43,7 @@ void radio_t::loop() {
 
   if ((mode.get_pulse_real() >= duty_mode_safe_low) && (mode.get_pulse_real() <= duty_mode_safe_high)) {
     if (curr_mode != Secure) {
-      m->stop();
+      // m->stop(); // The secure loop handles the stops.
       curr_mode = erumby_mode_t::Secure;
     }
     return;

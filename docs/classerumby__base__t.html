@@ -9,9 +9,22 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
@@ -19,6 +32,7 @@
 });
 </script><script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -33,6 +47,21 @@
    </div>
    <div id="projectbrief">Firmware for the eRumby low level microcontroller</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -44,16 +73,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
+$(document).ready(function(){initNavTree('classerumby__base__t.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,7 +104,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">erumby_base_t Class Reference</div>  </div>
@@ -79,7 +114,14 @@ $(function() {
  <a href="classerumby__base__t.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="types_8hpp_source.html">types.hpp</a>&gt;</code></p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Forward declaration for <code><a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a></code>. </p>
+<p>This abstract class is a forward declaration for the <code><a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a></code> class. The forward declaration allows us to have a channel for communication between each component of the car and the car itself (for example for raising an alarm). This approach is required by the compiler (simple forward declarations cannot access methods).</p>
+<p>A component that has a pointer to an istance of <code><a class="el" href="classerumby__base__t.html" title="Forward declaration for erumby_t. ">erumby_base_t</a></code> can only call methods that are hereby listed. The method hereby listed must be purely virtual and overriden in the singleton class <a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a>.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00077">77</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
+</div><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for erumby_base_t:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
@@ -90,22 +132,19 @@ $(function() {
 <area href="classerumby__t.html" title="Class for the ERUMBY robot. " alt="erumby_t" shape="rect" coords="0,56,98,80"/>
 </map>
  </div></div>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Forward declaration for <code><a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a></code>. </p>
-<p>This abstract class is a forward declaration for the <code><a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a></code> class. The forward declaration allows us to have a channel for communication between each component of the car and the car itself (for example for raising an alarm). This approach is required by the compiler (simple forward declarations cannot access methods).</p>
-<p>A component that has a pointer to an istance of <code><a class="el" href="classerumby__base__t.html" title="Forward declaration for erumby_t. ">erumby_base_t</a></code> can only call methods that are hereby listed. The method hereby listed must be purely virtual and overriden in the singleton class <a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a>.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classerumby__t.html" title="Class for the ERUMBY robot. ">erumby_t</a> </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="types_8hpp_source.html#l00077">77</a> of file <a class="el" href="types_8hpp_source.html">types.hpp</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="types_8hpp_source.html">types.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 15 2018 17:21:27 for eRumby-Firmware by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classerumby__base__t.html">erumby_base_t</a></li>
+    <li class="footer">Generated on Fri Nov 16 2018 13:50:06 for eRumby-Firmware by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -18,21 +18,20 @@
  * where:
  *
  * \f{align}
- *  A & = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} \\
- *  C & = \begin{bmatrix} 1 & 0 & 0 \end{bmatrix} \\
- *  C' & = \begin{bmatrix} 0 & 1 & 0 \end{bmatrix} \\
- *  L & = \begin{bmatrix} l_1 \\ l_2 \\ l_3 \end{bmatrix} \\
+ *  A & = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix} \\
+ *  C & = \begin{bmatrix} 1 & 0 \end{bmatrix} \\
+ *  C' & = \begin{bmatrix} 0 & 1 \end{bmatrix} \\
+ *  L & = \begin{bmatrix} l_1 \\ l_2 \end{bmatrix} \\
  *  E(\varepsilon) & = \begin{bmatrix}
- *    \varepsilon^{-1} & 0 & 0 \\
- *    0 & \varepsilon^{-2} & 0 \\
- *    0 & 0 & \varepsilon^{-3}
+ *    \varepsilon^{-1} & 0 \\
+ *    0 & \varepsilon^{-2}\\
  *  \end{bmatrix}
  * \f}
  *
  * where the parameters can be configured using Matlab for example:
  *
  * \f[
- *  L = - \mathrm{lqr}(A^\top, C^\top, I_{3 \times 3}, 1)^\top
+ *  L = - \mathrm{lqr}(A^\top, C^\top, I_{2 \times 2}, 1)^\top
  * \f]
  *
  * and than using \f$\varepsilon\f$ for changing the bandwidth of the filter.

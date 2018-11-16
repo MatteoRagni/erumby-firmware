@@ -415,14 +415,14 @@
  *
  * Define observer parameter for state 1 in the \p high_gain_obs_t
  */
-#define HG_L1 -2.424214
+#define HG_L1 -5
 
 /**
  * \def HG_L2
  *
  * Define observer parameter for state 2 in the \p high_gain_obs_t
  */
-#define HG_L2 HG_L1
+#define HG_L2 -6
 
 /**
  * \def HG_L3
