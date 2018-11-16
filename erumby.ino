@@ -12,33 +12,7 @@
  * car. Several objects have been implemented that correspond to hardware and software functionality
  * with a modular structure. The following is a general explanation of how the code works, for major 
  * datails please see the complete documentations.
- * 
- * @cond                                                                                                
- *                               +-----------+                                                                   
- *                               |           |                                                        
- *                               |   init    |                                                        
- *                               |           |                                                       
- *                               +-----------+                                                       
- *                                     |                                                             
- *                                     |                                                             
- *                                     V                                                             
-*                                +-----------+                                                                   
- *                               |           |                                                        
- *                               |   idle    |                                                        
- *                +--------------|           |--------------+                                                  
- *                |              +-----------+              |                                                
- *                |                ^       ^                |                                           
- *                |                |       |                |                                           
- *                |                |       |                |                                           
- *                V                |       |                V                                           
- *          +-----------+          |       |          +-----------+                                           
- *          |           |          |       |          |           |                    
- *          |   auto    |----------+       +----------|  manual   |                    
- *          |           |                             |           |                   
- *          +-----------+                             +-----------+                                                                  
- *                                                                                                  
- *                                                                                                  
- * @endcond                                                                                                 
+ *                                                                                         
  * @image html state_machine.png "State Machine Scheme"  
  *                                                                                                
  * At the start the erumby initialize its state and create the various object (encoder, communications, esc, servo),

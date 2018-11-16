@@ -111,13 +111,28 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="contents">
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Davide Piscini, Matteo Cocetti, Matteo Ragni</dd></dl>
 <p>Firmware for erumby low level controllor.</p>
-<p>The project of erumby car is an object oriented code for the low level functionaliy of the car. Several objects have been implemented that correspond to hardware and software functionality with a modular structure. The following is a general explanation of how the code works, for major datails please see the complete documentations. </p>
+<p>The project of erumby car is an object oriented code for the low level functionaliy of the car. Several objects have been implemented that correspond to hardware and software functionality with a modular structure. The following is a general explanation of how the code works, for major datails please see the complete documentations.</p>
+<div class="image">
+<img src="state_machine.png" alt="state_machine.png"/>
+<div class="caption">
+State Machine Scheme</div></div>
+<p> <br />
+ At the start the erumby initialize its state and create the various object (encoder, communications, esc, servo), after that the robot goes in the idle state. In this state the encoder, the i2c communications and the radio are read the motors are set in the idle state. At this point if the lateral command of the radio is switched the machine can go in two different state (<code><a class="el" href="classradio__t.html" title="Radio remote software interface. ">radio_t</a></code>). If goes in manual mode the the encoder, the i2c communications and the radio are read and the motors are command via the radio command input.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The remote triggers and wheels does not work, thus the remote input has been disabled commenting the define <code>REMOTE_NOT_WORKING</code> </dd>
+<dd>
+Due to the non functioning remote the Manual mode has never been actually tested. <b>Test it in a safe environment before using it</b>. <br />
+ If the robot goes in auto mode the encoder, the i2c communications and the radio are read. Via i2c the steering command is read and the servo motor is actuated according to this command. For the esc two scenario are possibile:</dd></dl>
+<ul>
+<li>open loop: the input via i2c is a negative uint16 number in the accetable range, this value is basically a pwm target and the esc is driven by this signal with the swapped sign ( <code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code>).</li>
+<li>closed loop: the input via i2c is a positive uint16 number, this value is the desire angular velocity of the wheel (<code><a class="el" href="classcommunication__t.html" title="Class for the i2c communications in the vehicle. ">communication_t</a></code>) this value is the reference of the speed controller and the esc is driven with the controller output (<code><a class="el" href="classcontroller__t.html" title="The actual ESC controller. ">controller_t</a></code>)</li>
+</ul>
+<p>The erumby can return in the idle state at any time - </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 16 2018 18:59:40 for eRumby-Firmware by
+    <li class="footer">Generated on Fri Nov 16 2018 19:03:35 for eRumby-Firmware by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>
