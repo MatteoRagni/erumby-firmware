@@ -371,7 +371,7 @@
  *
  * Define the value of proportional gain in the PI controller (\p controller_t)
  */
-#define CTRL_KP 0.005
+#define CTRL_KP 0.01
 
 /**
  * \def CTRL_KI
